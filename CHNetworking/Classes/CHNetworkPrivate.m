@@ -16,18 +16,18 @@ void CHLog(NSString *format, ...) {
 #endif
 }
 @implementation CHNetworkPrivate
-+ (NSString *)URLEncode:(NSString *)url {
-    NSString *newString =
-    CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault,
-                                                              (CFStringRef)url,
-                                                              NULL,
-                                                              CFSTR(":/?#[]@!$ &'()*+,;=\"<>%{}|\\^~`"), CFStringConvertNSStringEncodingToEncoding(NSUTF8StringEncoding)));
-    if (newString) {
-        return newString;
-    }
-    
-    return url;
-}
+//+ (NSString *)URLEncode:(NSString *)url {
+//    NSString *newString =
+//    CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault,
+//                                                              (CFStringRef)url,
+//                                                              NULL,
+//                                                              CFSTR(":/?#[]@!$ &'()*+,;=\"<>%{}|\\^~`"), CFStringConvertNSStringEncodingToEncoding(NSUTF8StringEncoding)));
+//    if (newString) {
+//        return newString;
+//    }
+//    
+//    return url;
+//}
 + (BOOL)checkJson:(id)json withValidator:(id)validatorJson {
     if ([json isKindOfClass:[NSDictionary class]] &&
         [validatorJson isKindOfClass:[NSDictionary class]]) {

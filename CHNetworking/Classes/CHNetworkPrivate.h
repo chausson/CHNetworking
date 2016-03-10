@@ -9,6 +9,6 @@
 #import <Foundation/Foundation.h>
 FOUNDATION_EXPORT void CHLog(NSString *format, ...) NS_FORMAT_FUNCTION(1,2);
 @interface CHNetworkPrivate : NSObject
-+ (NSString *)URLEncode:(NSString *)url;
+//+ (NSString *)URLEncode:(NSString *)url;
 + (BOOL)checkJson:(id)json withValidator:(id)validatorJson;
 @end

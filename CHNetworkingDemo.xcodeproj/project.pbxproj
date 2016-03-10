@@ -36,7 +36,7 @@
 		30F694501C91510400FA1E40 /* CHNetworkAgent.m in Sources */ = {isa = PBXBuildFile; fileRef = 30F694371C91510400FA1E40 /* CHNetworkAgent.m */; };
 		30F694511C91510400FA1E40 /* CHNetworkConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 30F694391C91510400FA1E40 /* CHNetworkConfig.m */; };
 		30F694521C91510400FA1E40 /* CHNetworkPrivate.m in Sources */ = {isa = PBXBuildFile; fileRef = 30F6943B1C91510400FA1E40 /* CHNetworkPrivate.m */; };
-		30F694551C91513700FA1E40 /* ASImageIdAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 30F694541C91513700FA1E40 /* ASImageIdAPI.m */; };
+		30F6945A1C916F6200FA1E40 /* ASImageIdAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 30F694591C916F6200FA1E40 /* ASImageIdAPI.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -97,8 +97,8 @@
 		30F694391C91510400FA1E40 /* CHNetworkConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHNetworkConfig.m; sourceTree = "<group>"; };
 		30F6943A1C91510400FA1E40 /* CHNetworkPrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHNetworkPrivate.h; sourceTree = "<group>"; };
 		30F6943B1C91510400FA1E40 /* CHNetworkPrivate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHNetworkPrivate.m; sourceTree = "<group>"; };
-		30F694531C91513700FA1E40 /* ASImageIdAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ASImageIdAPI.h; path = ../../CSNetworkingDemo/CHNetworkingDemo/ASImageIdAPI.h; sourceTree = "<group>"; };
-		30F694541C91513700FA1E40 /* ASImageIdAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ASImageIdAPI.m; path = ../../CSNetworkingDemo/CHNetworkingDemo/ASImageIdAPI.m; sourceTree = "<group>"; };
+		30F694581C916F6200FA1E40 /* ASImageIdAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASImageIdAPI.h; sourceTree = "<group>"; };
+		30F694591C916F6200FA1E40 /* ASImageIdAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASImageIdAPI.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,8 +133,8 @@
 		30F693F01C9150F000FA1E40 /* CHNetworkingDemo */ = {
 			isa = PBXGroup;
 			children = (
-				30F694531C91513700FA1E40 /* ASImageIdAPI.h */,
-				30F694541C91513700FA1E40 /* ASImageIdAPI.m */,
+				30F694581C916F6200FA1E40 /* ASImageIdAPI.h */,
+				30F694591C916F6200FA1E40 /* ASImageIdAPI.m */,
 				30F693F41C9150F000FA1E40 /* AppDelegate.h */,
 				30F693F51C9150F000FA1E40 /* AppDelegate.m */,
 				30F693F71C9150F000FA1E40 /* ViewController.h */,
@@ -333,7 +333,7 @@
 				30F6944B1C91510400FA1E40 /* UIRefreshControl+AFNetworking.m in Sources */,
 				30F6944C1C91510400FA1E40 /* UIWebView+AFNetworking.m in Sources */,
 				30F694521C91510400FA1E40 /* CHNetworkPrivate.m in Sources */,
-				30F694551C91513700FA1E40 /* ASImageIdAPI.m in Sources */,
+				30F6945A1C916F6200FA1E40 /* ASImageIdAPI.m in Sources */,
 				30F6943C1C91510400FA1E40 /* AFHTTPSessionManager.m in Sources */,
 				30F6944F1C91510400FA1E40 /* CHNetResponse.m in Sources */,
 				30F694441C91510400FA1E40 /* AFAutoPurgingImageCache.m in Sources */,
@@ -486,6 +486,7 @@
 				30F694071C9150F000FA1E40 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

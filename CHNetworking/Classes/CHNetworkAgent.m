@@ -197,7 +197,7 @@
     }
     [request clearCompletionBlock];
     if ([CHNetworkConfig sharedInstance].allowPrintLog) {
-        CHLog(@"Finished Request Class: %@ StatusCode= %lu URL=%@", NSStringFromClass([request class]),request.response.statusCode,[request.response.responseURL description]);
+        CHLog(@"Finished Request Class: %@ StatusCode= %lu URL=%@", NSStringFromClass([request class]),(unsigned long)request.response.statusCode,[request.response.responseURL description]);
     }
 
 }
