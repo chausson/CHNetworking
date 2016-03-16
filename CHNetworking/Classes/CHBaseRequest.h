@@ -12,6 +12,7 @@
 typedef NS_ENUM(NSInteger , CHRequestMethod) {
     CHRequestMethodGet ,
     CHRequestMethodPost,
+    CHRequestMethodPostData, // 上传二进制流文件
     CHRequestMethodPut,
 };
 
@@ -69,6 +70,19 @@ typedef void(^CHRequestCompletionBlock)(__kindof CHBaseRequest *request);
 
 /// 请求的参数
 - (NSDictionary *)requestParameter;
+
+/* 请求的二进制数据参数格式 
+ @param data The data to be encoded and appended to the form data.
+ @param name The name to be associated with the specified data. This parameter must not be `nil`.
+ @param fileName The filename to be associated with the specified data. This parameter must not be `nil`.
+ @param mimeType The MIME type of the specified data. (For example, the MIME type for a JPEG image is image/jpeg.) For a list of valid MIME types, see http://www.iana.org/assignments/media-types/. This parameter must not be `nil`.
+ key:"data" value:"(NSData *)obj"
+ key:"name" value:"(NSString *)name"
+ key:"filename" value:"(NSString *)filename"
+ key:"mimeType" value:"(NSString *)mimeType"
+ */
+
+- (NSDictionary *)requestDataInfo;
 
 
 /// Http请求的方法

@@ -21,16 +21,5 @@
     });
     return config;
 }
-- (void)setBaseUrl:(NSString *)baseUrl{
-    _baseUrl = baseUrl;
-}
-- (void)setBaseParameter:(NSDictionary *)baseParameter{
-    _baseParameter = baseParameter;
-}
-- (void)setMaxConcurrentOperationCount:(NSInteger)inter{
-    _maxConcurrentOperationCount = inter;
-}
-- (void)setAllowPrintLog:(BOOL)allowPrintLog{
-    _allowPrintLog = allowPrintLog;
-}
+
 @end

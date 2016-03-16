@@ -150,7 +150,7 @@
             request.response = [[CHNetResponse alloc]initWithSession:task andCallBackData:error];
             [self handleRequestResult:request];
         }];
-    } else if (request.requestMethod == CHRequestMethodPost) {
+    } else if (request.requestMethod == CHRequestMethodPut) {
         request.session = [manager PUT:url parameters:parameter success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
             request.response = [[CHNetResponse alloc]initWithSession:task andCallBackData:responseObject];
             [self handleRequestResult:request];
@@ -158,6 +158,33 @@
             request.response = [[CHNetResponse alloc]initWithSession:task andCallBackData:error];
             [self handleRequestResult:request];
         }];
+    }else if (request.requestMethod == CHRequestMethodPostData) {
+        if (request.requestDataInfo) {
+            NSData *data = [request.requestDataInfo objectForKey:@"data"];
+            NSString *name = [request.requestDataInfo objectForKey:@"name"];
+            NSString *filename = [request.requestDataInfo objectForKey:@"filename"];
+            NSString *mimeType = [request.requestDataInfo objectForKey:@"mimeType"];
+            if (data.length == 0 || name.length == 0 || filename.length == 0 || mimeType.length == 0) {
+                CHLog(@"上传文件的格式拼接错误");
+                return;
+            }
+            request.session = [manager POST:url parameters:parameter constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+                [formData appendPartWithFileData:data name:name fileName:filename mimeType:mimeType];
+            } progress:^(NSProgress * _Nonnull uploadProgress) {
+                
+            } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                request.response = [[CHNetResponse alloc]initWithSession:task andCallBackData:responseObject];
+                [self handleRequestResult:request];
+            } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                request.response = [[CHNetResponse alloc]initWithSession:task andCallBackData:error];
+                [self handleRequestResult:request];
+            }];
+        }else{
+            CHLog(@"上传文件的数据不存在");
+            return;
+
+        }
+
     }
   
     
@@ -197,7 +224,7 @@
     }
     [request clearCompletionBlock];
     if ([CHNetworkConfig sharedInstance].allowPrintLog) {
-        CHLog(@"Finished Request Class: %@ StatusCode= %lu URL=%@", NSStringFromClass([request class]),(unsigned long)request.response.statusCode,[request.response.responseURL description]);
+        CHLog(@"Finished Request Class: %@ StatusCode= %d URL=%@", NSStringFromClass([request class]),(int)request.response.statusCode,[request.response.responseURL description]);
     }
 
 }
