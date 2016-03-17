@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "CHNetworking"
-  s.version      = "0.0.1"
+  s.version      = "0.0.2"
   s.summary      = "A Net Framework Base On AFNetworking 3.0.4"
 
   # This description is used to generate tags and improve search results.
