@@ -89,24 +89,6 @@
         }
     }
     
-    switch (request.requestMethod ) {
-        case CHRequestMethodGet: {
-            manager.responseSerializer = [AFJSONResponseSerializer serializer];
-            break;
-        }
-        case CHRequestMethodPost: {
-            manager.responseSerializer = [AFXMLParserResponseSerializer serializer];
-            break;
-        }
-        case CHRequestMethodPut: {
-            manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-            break;
-        }
-        default: {
-            break;
-        }
-    }
-    
     manager.requestSerializer.stringEncoding = NSUTF8StringEncoding;
     
     for (NSString *key in request.requestHeaderFieldValueDictionary.allKeys) {
