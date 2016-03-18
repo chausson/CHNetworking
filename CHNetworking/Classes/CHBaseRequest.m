@@ -13,7 +13,9 @@
 - (NSString *)requestPathUrl{
     return @"";
 }
-
+- (NSDictionary *)requestDataInfo{
+    return nil;
+}
 - (NSString *)customUrl{
     return @"";
 }
