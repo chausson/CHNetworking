@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "60812F6CCA3EAF2ECDBF226B49387D1F861C5CAC",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "C59B38C682A5B7E714C881BBDD6234AFDC97E1FB" : 0,
+    "60812F6CCA3EAF2ECDBF226B49387D1F861C5CAC" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "0BA64142-140A-46E8-A0BC-8674B993C605",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "C59B38C682A5B7E714C881BBDD6234AFDC97E1FB" : "",
+    "60812F6CCA3EAF2ECDBF226B49387D1F861C5CAC" : "CHNetworking\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "CHNetworkingDemo",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "CHNetworkingDemo.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/chausson\/CHNetworking.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "60812F6CCA3EAF2ECDBF226B49387D1F861C5CAC"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "http:\/\/182.254.141.244:7990\/scm\/p2p-financial-guide\/ios.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "C59B38C682A5B7E714C881BBDD6234AFDC97E1FB"
+    }
+  ]
+}
