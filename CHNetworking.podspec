@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "CHNetworking"
-  s.version      = "0.0.3"
+  s.version      = "0.0.4"
   s.summary      = "A Net Framework Base On AFNetworking 3.0.4"
 
   # This description is used to generate tags and improve search results.
@@ -78,7 +78,7 @@ Pod::Spec.new do |s|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  s.source       = { :git => "https://github.com/chausson/CHNetworking.git", :tag => "0.0.3"}
+  s.source       = { :git => "https://github.com/chausson/CHNetworking.git", :tag => "0.0.4"}
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   #
   #  CocoaPods is smart about how it includes source code. For source files
