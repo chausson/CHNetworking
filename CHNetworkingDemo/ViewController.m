@@ -13,20 +13,25 @@
 
 @end
 
-@implementation ViewController
+@implementation ViewController{
+    ASImageIdAPI *api;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    ASImageIdAPI *api = [[ASImageIdAPI alloc]init];
+    api = [[ASImageIdAPI alloc]init];
     
+
+
+    // Do any additional setup after loading the view, typically from a nib.
+}
+- (IBAction)action:(UIButton *)sender {
     [api startWithSuccessBlock:^(__kindof CHBaseRequest *request) {
         ASImageIdAPI *imageid = (ASImageIdAPI *)request;
         NSLog(@"imageid.imageIds=%@",[imageid getImageIds]);
     } failureBlock:^(__kindof CHBaseRequest *request) {
         
     }];
-
-    // Do any additional setup after loading the view, typically from a nib.
 }
 
 - (void)didReceiveMemoryWarning {

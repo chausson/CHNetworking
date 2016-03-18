@@ -14,6 +14,7 @@
 #import "CHNetworkPrivate.h"
 @implementation CHNetworkAgent{
     CHNetworkConfig *_config;
+     NSMutableDictionary *_requestsRecord;
     
 }
 + (CHNetworkAgent *)sharedInstance{
@@ -29,6 +30,7 @@
     self = [super init];
     if (self) {
         _config = [CHNetworkConfig sharedInstance];
+        _requestsRecord = [NSMutableDictionary dictionary];
     }
     return self;
 }
@@ -111,34 +113,34 @@
         [parameter addEntriesFromDictionary:_config.baseParameter];
     }
 //    url = [CHNetworkPrivate URLEncode:url];
-    
+
     if (request.requestMethod == CHRequestMethodGet) {
        request.session = [manager GET:url parameters:parameter progress:^(NSProgress * _Nonnull downloadProgress) {
            
         } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
             request.response = [[CHNetResponse alloc]initWithSession:task andCallBackData:responseObject];
-            [self handleRequestResult:request];
+            [self handleRequestResult:task];
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
             request.response = [[CHNetResponse alloc]initWithSession:task andCallBackData:error];
-            [self handleRequestResult:request];
+            [self handleRequestResult:task];
         }];
     } else if (request.requestMethod == CHRequestMethodPost) {
         request.session = [manager POST:url parameters:parameter progress:^(NSProgress * _Nonnull downloadProgress) {
            
         } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
             request.response = [[CHNetResponse alloc]initWithSession:task andCallBackData:responseObject];
-            [self handleRequestResult:request];
+            [self handleRequestResult:task];
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
             request.response = [[CHNetResponse alloc]initWithSession:task andCallBackData:error];
-            [self handleRequestResult:request];
+            [self handleRequestResult:task];
         }];
     } else if (request.requestMethod == CHRequestMethodPut) {
         request.session = [manager PUT:url parameters:parameter success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
             request.response = [[CHNetResponse alloc]initWithSession:task andCallBackData:responseObject];
-            [self handleRequestResult:request];
+            [self handleRequestResult:task];
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
             request.response = [[CHNetResponse alloc]initWithSession:task andCallBackData:error];
-            [self handleRequestResult:request];
+            [self handleRequestResult:task];
         }];
     }else if (request.requestMethod == CHRequestMethodPostData) {
         if (request.requestDataInfo) {
@@ -147,7 +149,9 @@
             NSString *filename = [request.requestDataInfo objectForKey:@"filename"];
             NSString *mimeType = [request.requestDataInfo objectForKey:@"mimeType"];
             if (data.length == 0 || name.length == 0 || filename.length == 0 || mimeType.length == 0) {
-                CHLog(@"上传文件的格式拼接错误");
+                if ([CHNetworkConfig sharedInstance].allowPrintLog) {
+                    CHLog(@"上传文件的格式拼接错误");
+                }
                 return;
             }
             request.session = [manager POST:url parameters:parameter constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
@@ -156,27 +160,32 @@
                 
             } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
                 request.response = [[CHNetResponse alloc]initWithSession:task andCallBackData:responseObject];
-                [self handleRequestResult:request];
+                [self handleRequestResult:task];
             } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
                 request.response = [[CHNetResponse alloc]initWithSession:task andCallBackData:error];
-                [self handleRequestResult:request];
+                [self handleRequestResult:task];
             }];
         }else{
-            CHLog(@"上传文件的数据不存在");
+            if ([CHNetworkConfig sharedInstance].allowPrintLog) {
+                CHLog(@"上传文件的数据不存在");
+            }
+  
             return;
 
         }
 
     }
-  
+    [self addOperation:request];
     
 }
 
 - (void)cancelRequest:(CHBaseRequest *)request{
     if (request.session) {
         [request.session cancel];
+        [self removeOperation:request.session];
+        [request clearCompletionBlock];
     }
-    [request clearCompletionBlock];
+
 }
 
 - (NSString *)createURLWithRequest:(CHBaseRequest *)request{
@@ -191,24 +200,53 @@
     }
     return url;
 }
-- (void)handleRequestResult:(CHBaseRequest *)request{
-    if ([request respondsToSelector:@selector(requestCompletionBeforeBlock)]) {
-        [request requestCompletionBeforeBlock];
+- (void)handleRequestResult:(CHURLSessionTask *)session{
+    NSString *key = [self requestHashKey:session];
+    CHBaseRequest *request = _requestsRecord[key];
+    if (request) {
+        if ([request respondsToSelector:@selector(requestCompletionBeforeBlock)]) {
+            [request requestCompletionBeforeBlock];
+        }
+        if (request.response.error) {
+            request.failureBlock(request);
+            // 服务器接口访问失败
+        }else{
+            request.successfulBlock(request);
+        }
+        if ([request respondsToSelector:@selector(requestCompletionAfterBlock)]) {
+            [request requestCompletionAfterBlock];
+        }
+
     }
-    if (request.response.error) {
-        request.failureBlock(request);
-        // 服务器接口访问失败
-    }else{
-        request.successfulBlock(request);
-    }
-    if ([request respondsToSelector:@selector(requestCompletionAfterBlock)]) {
-        [request requestCompletionAfterBlock];
-    }
+    [self removeOperation:request.session];
     [request clearCompletionBlock];
+ 
     if ([CHNetworkConfig sharedInstance].allowPrintLog) {
         CHLog(@"Finished Request Class: %@ StatusCode= %d URL=%@", NSStringFromClass([request class]),(int)request.response.statusCode,[request.response.responseURL description]);
     }
 
 }
+- (void)addOperation:(CHBaseRequest *)request {
+    if (request.session != nil) {
+        NSString *key = [self requestHashKey:request.session];
+        @synchronized(self) {
+            _requestsRecord[key] = request;
+        }
+    }
+}
+- (NSString *)requestHashKey:(CHURLSessionTask *)operation {
+    NSString *key = [NSString stringWithFormat:@"%lu", (unsigned long)[operation hash]];
+    return key;
+}
+- (void)removeOperation:(CHURLSessionTask *)operation {
+    NSString *key = [self requestHashKey:operation];
+    @synchronized(self) {
+        [_requestsRecord removeObjectForKey:key];
+        if ([CHNetworkConfig sharedInstance].allowPrintLog) {
+            CHLog(@"Request queue size = %lu", (unsigned long)[_requestsRecord count]);
+        }
+    }
+  
 
+}
 @end

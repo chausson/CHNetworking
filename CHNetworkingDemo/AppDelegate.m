@@ -16,8 +16,7 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    [[CHNetworkConfig sharedInstance]setBaseUrl:@"www.artisanstate.com.t"];
-    [[CHNetworkConfig sharedInstance]setBaseParameter:@{@"version":@"1.0.1"}];
+    [[CHNetworkConfig sharedInstance]setBaseUrl:@"http://p2pguide.sudaotech.com/platform"];
     [[CHNetworkConfig sharedInstance] setAllowPrintLog:YES];
     return YES;
 }

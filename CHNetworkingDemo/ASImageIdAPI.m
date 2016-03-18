@@ -11,12 +11,12 @@
 @implementation ASImageIdAPI
 
 - (NSString *)requestPathUrl{
-    return @"/phone/getBatchImageIds.ep";
+    return @"/app/content?";
 }
 -(NSDictionary *)requestParameter{
-    return @{@"imageIdCount":@(2)};
+    return @{@"type":@(0)};
 }
 - (NSArray *)getImageIds{
-    return self.response.responseJSONObject[@"imageIds"];
+    return self.response.responseJSONObject[@"data"];
 }
 @end
