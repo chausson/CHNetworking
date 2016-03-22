@@ -40,6 +40,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0696B55F1CA1123E00E69D13 /* CHNetworking.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CHNetworking.h; sourceTree = "<group>"; };
 		30F693EE1C9150F000FA1E40 /* CHNetworkingDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CHNetworkingDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		30F693F21C9150F000FA1E40 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		30F693F41C9150F000FA1E40 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -237,6 +238,7 @@
 				30F694391C91510400FA1E40 /* CHNetworkConfig.m */,
 				30F6943A1C91510400FA1E40 /* CHNetworkPrivate.h */,
 				30F6943B1C91510400FA1E40 /* CHNetworkPrivate.m */,
+				0696B55F1CA1123E00E69D13 /* CHNetworking.h */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
