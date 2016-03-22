@@ -211,7 +211,7 @@
         NSAssert(request.requestPathUrl.length > 0 , @"pathUrl is nil");
         url = [NSString stringWithFormat:@"%@%@",_config.baseUrl,request.requestPathUrl];
     }
-    if (![request.customUrl hasPrefix:@"http"]) {
+    if (![url hasPrefix:@"http"]) {
         url = [NSString stringWithFormat:@"http://%@",url];
     }
     return url;
