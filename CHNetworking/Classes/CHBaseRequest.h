@@ -12,8 +12,11 @@
 typedef NS_ENUM(NSInteger , CHRequestMethod) {
     CHRequestMethodGet ,
     CHRequestMethodPost,
-    CHRequestMethodPostData, // 上传二进制流文件
     CHRequestMethodPut,
+    CHRequestMethodPatch,
+    CHRequestMethodDelete,
+    CHRequestMethodPostData, // 上传二进制流文件
+
 };
 
 typedef NS_ENUM(NSInteger , CHRequestSerializerType) {

@@ -142,6 +142,22 @@
             request.response = [[CHNetResponse alloc]initWithSession:task andCallBackData:error];
             [self handleRequestResult:task];
         }];
+    }else if (request.requestMethod == CHRequestMethodPatch) {
+        request.session = [manager PATCH:url parameters:parameter success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+            request.response = [[CHNetResponse alloc]initWithSession:task andCallBackData:responseObject];
+            [self handleRequestResult:task];
+        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+            request.response = [[CHNetResponse alloc]initWithSession:task andCallBackData:error];
+            [self handleRequestResult:task];
+        }];
+    }else if (request.requestMethod == CHRequestMethodDelete) {
+        request.session = [manager DELETE:url parameters:parameter success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+            request.response = [[CHNetResponse alloc]initWithSession:task andCallBackData:responseObject];
+            [self handleRequestResult:task];
+        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+            request.response = [[CHNetResponse alloc]initWithSession:task andCallBackData:error];
+            [self handleRequestResult:task];
+        }];
     }else if (request.requestMethod == CHRequestMethodPostData) {
         if (request.requestDataInfo) {
             NSData *data = [request.requestDataInfo objectForKey:@"data"];
