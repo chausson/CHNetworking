@@ -224,10 +224,14 @@
             [request requestCompletionBeforeBlock];
         }
         if (request.response.error) {
-            request.failureBlock(request);
-            // 服务器接口访问失败
+            if (request.failureBlock) {
+                request.failureBlock(request);
+            }
         }else{
-            request.successfulBlock(request);
+            if (request.successfulBlock) {
+                request.successfulBlock(request);
+            }
+
         }
         if ([request respondsToSelector:@selector(requestCompletionAfterBlock)]) {
             [request requestCompletionAfterBlock];
