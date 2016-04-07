@@ -23,5 +23,8 @@
 方便做对象的持久化。 
 
 # 它的弊端
-也是相对的在整个项目中增加了对网络请求的代码量和文件类的增加。    
+也是相对的在整个项目中增加了对网络请求的代码量和文件类的增加。
+
+# CHNetworking设计架构图
+ ![image](https://github.com/chausson/CHNetworking/blob/master/CHNetworkingDesgin.png)
    
