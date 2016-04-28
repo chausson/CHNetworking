@@ -34,6 +34,10 @@
 - (BOOL )isFilterheaderFieldParameter{
     return NO;
 }
+/// 需要返回的模型对象
+- (Class)responseModelClass{
+    return nil;
+}
 /// Http请求的方法
 - (CHRequestMethod)requestMethod{
     return CHRequestMethodGet;
@@ -70,10 +74,23 @@
     self.failureBlock = nil;
 }
 - (void)start{
+    [self requestWillStart];
     [[CHNetworkAgent sharedInstance]addRequest:self];
 }
 - (void)stop{
+    [self requestWillStop];
+    self.delegate = nil;
     [[CHNetworkAgent sharedInstance]cancelRequest:self];
+    [self requestDidStop];
+}
+- (void)requestWillStart{
+    
+}
+- (void)requestWillStop{
+    
+}
+- (void)requestDidStop{
+    
 }
 - (void)requestCompletionAfterBlock{
     

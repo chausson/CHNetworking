@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
+@class JSONModel;
 @interface CHNetResponse : NSObject
 
 - (instancetype)initWithSession:(NSURLSessionDataTask *)session andCallBackData:(id)data;
@@ -18,6 +18,8 @@
 
 @property (readonly, strong ) id responseJSONObject;/* an responseData With JSON for this Request if type is JSON*/
 
+@property (readonly, strong ) JSONModel * serializerObject;/* 通过Class获取解析完的对象*/
+
 @property (readonly, strong ) NSDictionary *allHeaderFields;
 
 @property (readonly, strong) NSData *responseData;
@@ -25,5 +27,7 @@
 @property (readonly, strong) NSURL *responseURL;
 
 @property (readonly, strong) NSError *error;
+
+- (void)setSerializerClass:(Class )obj;
 
 @end

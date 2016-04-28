@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "AFNetworking.h"
 #import "CHNetResponse.h"
+#define CHDEPRECATED(_version) __attribute__((deprecated)) //弃用方法宏定义
+
 typedef NS_ENUM(NSInteger , CHRequestMethod) {
     CHRequestMethodGet ,
     CHRequestMethodPost,
@@ -31,6 +33,13 @@ typedef NS_ENUM(NSUInteger, CHRequestResponseType) {
 
 @class CHBaseRequest;
 
+@protocol CHRequestDelegate <NSObject>
+
+@optional
+- (void)requestBeforeFinished:(CHBaseRequest *)request;
+- (void)requestFinished:(CHBaseRequest *)request;
+- (void)requestFailed:(CHBaseRequest *)request;
+@end
 // 请勿直接使用NSURLSessionDataTask,以减少对第三方的依赖
 // 所有接口返回的类型都是基类NSURLSessionTask，若要接收返回值
 // 且处理，请转换成对应的子类类型
@@ -48,6 +57,7 @@ typedef void(^CHRequestCompletionBlock)(__kindof CHBaseRequest *request);
 
 @property (copy ,nonatomic ) CHRequestCompletionBlock failureBlock;
 
+@property (nonatomic, weak) id<CHRequestDelegate> delegate;
 /**
  *  block回调
  */
@@ -70,9 +80,9 @@ typedef void(^CHRequestCompletionBlock)(__kindof CHBaseRequest *request);
 
 /// 请求的连接超时时间，默认为60秒
 - (NSTimeInterval)requestTimeoutInterval;
-
 /// 请求的参数
 - (NSDictionary *)requestParameter;
+
 
 /* 请求的二进制数据参数格式 
  @param data The data to be encoded and appended to the form data.
@@ -86,6 +96,9 @@ typedef void(^CHRequestCompletionBlock)(__kindof CHBaseRequest *request);
  */
 
 - (NSDictionary *)requestDataInfo;
+/// 需要返回的模型对象
+- (Class )responseModelClass;
+
 // 是否过滤公共参数 默认为否
 - (BOOL )isFilterBaseParameter;
 // 是否过滤公共头参数 默认为否
@@ -102,10 +115,15 @@ typedef void(^CHRequestCompletionBlock)(__kindof CHBaseRequest *request);
 /// 在HTTP请求头添加的自定义参数
 - (NSDictionary *)requestHeaderFieldValueDictionary;
 
+// hook request生命周期
+- (void)requestWillStart;
+- (void)requestWillStop;
+- (void)requestDidStop;
+
 /// 在block回调完成后事件处理
-- (void)requestCompletionAfterBlock;
+- (void)requestCompletionAfterBlock CHDEPRECATED(0.12);
 /// 在block回调完成前事件处理
-- (void)requestCompletionBeforeBlock;
+- (void)requestCompletionBeforeBlock CHDEPRECATED(0.12);
 
 - (void)stop;
 

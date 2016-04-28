@@ -7,7 +7,7 @@
 //
 
 #import "ASImageIdAPI.h"
-
+#import "ExampleModel.h"
 @implementation ASImageIdAPI
 
 - (NSString *)requestPathUrl{
@@ -17,6 +17,11 @@
     return @{@"type":@(0)};
 }
 - (NSArray *)getImageIds{
-    return self.response.responseJSONObject[@"data"];
+    ExampleModel *model = (ExampleModel *)self.response.serializerObject;
+    NSLog(@"message = %@",model.message);
+    return nil;
+}
+- (Class )responseModelClass{
+    return [ExampleModel class];
 }
 @end

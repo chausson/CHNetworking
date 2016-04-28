@@ -28,7 +28,8 @@
 - (IBAction)action:(UIButton *)sender {
     [api startWithSuccessBlock:^(__kindof CHBaseRequest *request) {
         ASImageIdAPI *imageid = (ASImageIdAPI *)request;
-        NSLog(@"imageid.imageIds=%@",[imageid getImageIds]);
+        [imageid getImageIds];
+      //  NSLog(@"imageid.imageIds=%@",[imageid getImageIds]);
     } failureBlock:^(__kindof CHBaseRequest *request) {
         
     }];

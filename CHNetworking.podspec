@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "CHNetworking"
-  s.version      = "0.1.2" 
+  s.version      = "0.1.3" 
   s.summary      = "A Net Framework Base On AFNetworking 3.0.4"
 
   # This description is used to generate tags and improve search results.
@@ -24,7 +24,7 @@ Pod::Spec.new do |s|
   #   * Try to keep it short, snappy and to the point.
   #   * Write the description between the DESC delimiters below.
   #   * Finally, don't worry about the indent, CocoaPods strips it!
-  s.description  = "Fix Agent Block Nil Crash Check And Also Update Tag To 0.1.2"
+  s.description  = "Add base parameters and Serializer dependent on JSONModel"
 
   s.homepage     = "https://github.com/chausson/CHNetworking.git"
   # s.screenshots  = "www.example.com/screenshots_1.gif", "www.example.com/screenshots_2.gif"
@@ -78,7 +78,7 @@ Pod::Spec.new do |s|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  s.source       = { :git => "https://github.com/chausson/CHNetworking.git", :tag => "0.1.2"}
+  s.source       = { :git => "https://github.com/chausson/CHNetworking.git", :tag => "0.1.3"}
  # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   #
   #  CocoaPods is smart about how it includes source code. For source files
@@ -129,6 +129,6 @@ Pod::Spec.new do |s|
   # s.requires_arc = true
 
   # s.xcconfig = { "HEADER_SEARCH_PATHS" => "$(SDKROOT)/usr/include/libxml2" }
-  s.dependency "AFNetworking", "~> 3.0.4"
+  s.dependency "AFNetworking", "~> 3.0.4","JSONModel"
 
 end

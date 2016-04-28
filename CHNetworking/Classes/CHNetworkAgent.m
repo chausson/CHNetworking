@@ -235,15 +235,28 @@
 - (void)handleRequestResult:(CHURLSessionTask *)session{
     NSString *key = [self requestHashKey:session];
     CHBaseRequest *request = _requestsRecord[key];
+    if ([request responseModelClass]) {
+            [request.response setSerializerClass:[request responseModelClass]];
+    }
+
+    if (request.delegate  != nil && [request.delegate respondsToSelector:@selector(requestBeforeFinished:)]) {
+        [request.delegate requestBeforeFinished:request];
+    }
     if (request) {
         if ([request respondsToSelector:@selector(requestCompletionBeforeBlock)]) {
             [request requestCompletionBeforeBlock];
         }
         if (request.response.error) {
+            if (request.delegate  != nil && [request.delegate respondsToSelector:@selector(requestFailed:)]) {
+                [request.delegate requestFailed:request];
+            }
             if (request.failureBlock) {
                 request.failureBlock(request);
             }
         }else{
+            if (request.delegate  != nil && [request.delegate respondsToSelector:@selector(requestFinished:)]) {
+                [request.delegate requestFinished:request];
+            }
             if (request.successfulBlock) {
                 request.successfulBlock(request);
             }
