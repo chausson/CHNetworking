@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "CHNetworking"
-  s.version      = "0.1.3" 
+  s.version      = "0.2" 
   s.summary      = "A Net Framework Base On AFNetworking 3.0.4"
 
   # This description is used to generate tags and improve search results.
@@ -24,8 +24,7 @@ Pod::Spec.new do |s|
   #   * Try to keep it short, snappy and to the point.
   #   * Write the description between the DESC delimiters below.
   #   * Finally, don't worry about the indent, CocoaPods strips it!
-  s.description  = "Add base parameters and Serializer dependent on JSONModel"
-
+  s.description  = "Add SerializerObject depend on JSONModel in version2.0"
   s.homepage     = "https://github.com/chausson/CHNetworking.git"
   # s.screenshots  = "www.example.com/screenshots_1.gif", "www.example.com/screenshots_2.gif"
 
@@ -78,8 +77,7 @@ Pod::Spec.new do |s|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  s.source       = { :git => "https://github.com/chausson/CHNetworking.git", :tag => "0.1.3"}
- # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
+  s.source       = { :git => "https://github.com/chausson/CHNetworking.git", :tag => "0.2"} # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   #
   #  CocoaPods is smart about how it includes source code. For source files
   #  giving a folder will include any swift, h, m, mm, c & cpp files.
