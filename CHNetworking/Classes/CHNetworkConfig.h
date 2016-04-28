@@ -10,14 +10,22 @@
 @interface CHNetworkConfig : NSObject
 + (CHNetworkConfig *)sharedInstance;
 
-@property (strong, nonatomic) NSString *baseUrl;
+@property (copy, nonatomic) NSString *baseUrl;
+/**
+ *   @brief 公共的参数数组
+ */
+@property (strong, nonatomic ,readonly) NSArray <NSDictionary *>*baseParameters;
 
-@property (strong, nonatomic) NSDictionary *baseParameter;
+@property (strong, nonatomic ,readonly) NSArray <NSDictionary *>*headerFieldParameters;
 /**
  *   @brief 设置允许同时最大并发数量，过大容易出问题, 默认3
  */
 @property (assign, nonatomic) NSInteger maxConcurrentOperationCount;
 
 @property (assign, nonatomic) BOOL allowPrintLog; //  authorization to print log info defult = NO
-
+/**
+ *   @brief 添加公共的参数数组
+ */
+- (void)addBaseParameter:(NSDictionary *)parameter;
+- (void)addheaderFieldParameter:(NSDictionary *)parameter;
 @end

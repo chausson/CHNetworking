@@ -28,7 +28,12 @@
 - (NSDictionary *)requestParameter{
     return nil;
 }
-
+- (BOOL )isFilterBaseParameter{
+    return NO;
+}
+- (BOOL )isFilterheaderFieldParameter{
+    return NO;
+}
 /// Http请求的方法
 - (CHRequestMethod)requestMethod{
     return CHRequestMethodGet;

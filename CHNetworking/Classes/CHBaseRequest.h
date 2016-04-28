@@ -86,8 +86,10 @@ typedef void(^CHRequestCompletionBlock)(__kindof CHBaseRequest *request);
  */
 
 - (NSDictionary *)requestDataInfo;
-
-
+// 是否过滤公共参数 默认为否
+- (BOOL )isFilterBaseParameter;
+// 是否过滤公共头参数 默认为否
+- (BOOL )isFilterheaderFieldParameter;
 /// Http请求的方法
 - (CHRequestMethod)requestMethod;
 

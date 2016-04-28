@@ -47,7 +47,8 @@
     }
     
     manager.requestSerializer.stringEncoding = NSUTF8StringEncoding;
-    
+
+
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithArray:@[@"application/json",
                                                                               @"text/html",
                                                                               @"text/json",
@@ -57,6 +58,19 @@
                                                                               @"image/*"]];
     manager.operationQueue.maxConcurrentOperationCount = [_config maxConcurrentOperationCount] ;
     manager.requestSerializer.timeoutInterval = [request requestTimeoutInterval];
+    
+    if (_config.headerFieldParameters && ![request isFilterheaderFieldParameter]) {
+        [_config.headerFieldParameters enumerateObjectsUsingBlock:^(NSDictionary * _Nonnull dict, NSUInteger idx, BOOL * _Nonnull stop) {
+            [dict enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
+                NSString *value = obj;
+                if (value.length > 0) {
+                    [manager.requestSerializer setValue:value forHTTPHeaderField:key];
+                }
+
+            }];
+        }];
+
+    }
     //默认是json
     switch (request.requestSerializerType) {
         case CHRequestSerializerTypeJSON: {
@@ -109,8 +123,10 @@
 //添加公共参数
     NSMutableDictionary *parameter = [[NSMutableDictionary alloc]initWithDictionary:request.requestParameter];
 
-    if (_config.baseParameter) {
-        [parameter addEntriesFromDictionary:_config.baseParameter];
+    if (_config.baseParameters && ![request isFilterBaseParameter]) {
+        [_config.baseParameters enumerateObjectsUsingBlock:^(NSDictionary * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            [parameter addEntriesFromDictionary:obj];
+        }];
     }
 //    url = [CHNetworkPrivate URLEncode:url];
 
