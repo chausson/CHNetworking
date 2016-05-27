@@ -4,10 +4,15 @@
 基于 AFNetworking 封装的 iOS 网络库，其实现了一套基于子类实现封装 的 API。
 
 # CHNetworking安装
-通过cocoapods第三方依赖管理安装cocoapods
-& pod 'CHNetworking'
+
+```
+pod 'CHNetworking'
+
+```
 
 # CHNetworking提供的功能
+
+```
 相比 AFNetworking，CHNetworking 提供了以下的功能：  支持按不同类型切换网络环境 支持 block 模式的回调方式
 
 1.支持批量的网络请求发送，并统一设置它们的回调（以后实现）
@@ -19,6 +24,7 @@
 4.支持自定义用户体验提示，在请求的时候开始HUD提示，或者在失败的时候提示用户。 
 
 5.支持自动释放block，不用关心block的循环引用
+```
 
 # CHNetworking的基础
 把每一个网络请求封装成一个对象，每一个请求都需要继承CHRequest类，子类实现父类的方法来构造请求。  
