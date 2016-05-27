@@ -15,16 +15,15 @@ Pod::Spec.new do |s|
   #  summary should be tweet-length, and the description more in depth.
   #
 
-  s.name         = "CHNetworking"
-  s.version      = "0.2" 
-  s.summary      = "A Net Framework Base On AFNetworking 3.0.4"
-
+  s.name         = "SDBaseRequest"
+  s.version      = "0.1" 
+  s.summary      = "Using CHNetworking Requests "
   # This description is used to generate tags and improve search results.
   #   * Think: What does it do? Why did you write it? What is the focus?
   #   * Try to keep it short, snappy and to the point.
   #   * Write the description between the DESC delimiters below.
   #   * Finally, don't worry about the indent, CocoaPods strips it!
-  s.description  = "Add SerializerObject depend on JSONModel in version2.0"
+  s.description  = "It's descripition how to use chnetworking for some base request"
   s.homepage     = "https://github.com/chausson/CHNetworking.git"
   # s.screenshots  = "www.example.com/screenshots_1.gif", "www.example.com/screenshots_2.gif"
 
@@ -85,7 +84,7 @@ Pod::Spec.new do |s|
   #  Not including the public_header_files will make all headers public.
   #
 
-  s.source_files  = "CHNetworking/Classes/*.{h,m}"
+  s.source_files  = "SDBaseRequest/*.{h,m}"
   # s.exclude_files = "Classes/Exclude"
 
   # s.public_header_files = "Classes/**/*.h"
@@ -127,8 +126,6 @@ Pod::Spec.new do |s|
   # s.requires_arc = true
 
   # s.xcconfig = { "HEADER_SEARCH_PATHS" => "$(SDKROOT)/usr/include/libxml2" }
-  s.dependency "AFNetworking", "~> 3.0.4"
-  s.dependency "JSONModel"
-
+  s.dependency "AFNetworking"
 end
 

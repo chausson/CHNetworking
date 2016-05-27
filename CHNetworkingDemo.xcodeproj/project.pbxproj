@@ -20,6 +20,15 @@
 		0601E1181CD20B1C00462846 /* LICENSE_jsonmodel.txt in Resources */ = {isa = PBXBuildFile; fileRef = 0601E10C1CD20B1C00462846 /* LICENSE_jsonmodel.txt */; };
 		0601E1191CD20B1C00462846 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 0601E10D1CD20B1C00462846 /* README.md */; };
 		0601E11C1CD2182D00462846 /* ExampleModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0601E11B1CD2182D00462846 /* ExampleModel.m */; };
+		066ED2D21CF83C57009B6454 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 066ED2C01CF83C57009B6454 /* Info.plist */; };
+		066ED2D31CF83C57009B6454 /* SDBaseResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 066ED2C31CF83C57009B6454 /* SDBaseResponse.m */; };
+		066ED2D41CF83C57009B6454 /* SDForgetPasswordAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 066ED2C51CF83C57009B6454 /* SDForgetPasswordAPI.m */; };
+		066ED2D51CF83C57009B6454 /* SDLoginAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 066ED2C71CF83C57009B6454 /* SDLoginAPI.m */; };
+		066ED2D61CF83C57009B6454 /* SDRegisterAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 066ED2C91CF83C57009B6454 /* SDRegisterAPI.m */; };
+		066ED2D71CF83C57009B6454 /* SDResetPasswordAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 066ED2CB1CF83C57009B6454 /* SDResetPasswordAPI.m */; };
+		066ED2D81CF83C57009B6454 /* SDSendCodeAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 066ED2CD1CF83C57009B6454 /* SDSendCodeAPI.m */; };
+		066ED2D91CF83C57009B6454 /* SDUpdateProfileAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 066ED2CF1CF83C57009B6454 /* SDUpdateProfileAPI.m */; };
+		066ED2DA1CF83C57009B6454 /* SDUploadImageAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 066ED2D11CF83C57009B6454 /* SDUploadImageAPI.m */; };
 		30F693F31C9150F000FA1E40 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 30F693F21C9150F000FA1E40 /* main.m */; };
 		30F693F61C9150F000FA1E40 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 30F693F51C9150F000FA1E40 /* AppDelegate.m */; };
 		30F693F91C9150F000FA1E40 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30F693F81C9150F000FA1E40 /* ViewController.m */; };
@@ -78,6 +87,24 @@
 		0601E10D1CD20B1C00462846 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		0601E11A1CD2182D00462846 /* ExampleModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExampleModel.h; sourceTree = "<group>"; };
 		0601E11B1CD2182D00462846 /* ExampleModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExampleModel.m; sourceTree = "<group>"; };
+		066ED2C01CF83C57009B6454 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		066ED2C11CF83C57009B6454 /* SDBaseRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDBaseRequest.h; sourceTree = "<group>"; };
+		066ED2C21CF83C57009B6454 /* SDBaseResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDBaseResponse.h; sourceTree = "<group>"; };
+		066ED2C31CF83C57009B6454 /* SDBaseResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDBaseResponse.m; sourceTree = "<group>"; };
+		066ED2C41CF83C57009B6454 /* SDForgetPasswordAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDForgetPasswordAPI.h; sourceTree = "<group>"; };
+		066ED2C51CF83C57009B6454 /* SDForgetPasswordAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDForgetPasswordAPI.m; sourceTree = "<group>"; };
+		066ED2C61CF83C57009B6454 /* SDLoginAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDLoginAPI.h; sourceTree = "<group>"; };
+		066ED2C71CF83C57009B6454 /* SDLoginAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDLoginAPI.m; sourceTree = "<group>"; };
+		066ED2C81CF83C57009B6454 /* SDRegisterAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDRegisterAPI.h; sourceTree = "<group>"; };
+		066ED2C91CF83C57009B6454 /* SDRegisterAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDRegisterAPI.m; sourceTree = "<group>"; };
+		066ED2CA1CF83C57009B6454 /* SDResetPasswordAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDResetPasswordAPI.h; sourceTree = "<group>"; };
+		066ED2CB1CF83C57009B6454 /* SDResetPasswordAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDResetPasswordAPI.m; sourceTree = "<group>"; };
+		066ED2CC1CF83C57009B6454 /* SDSendCodeAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDSendCodeAPI.h; sourceTree = "<group>"; };
+		066ED2CD1CF83C57009B6454 /* SDSendCodeAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDSendCodeAPI.m; sourceTree = "<group>"; };
+		066ED2CE1CF83C57009B6454 /* SDUpdateProfileAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDUpdateProfileAPI.h; sourceTree = "<group>"; };
+		066ED2CF1CF83C57009B6454 /* SDUpdateProfileAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDUpdateProfileAPI.m; sourceTree = "<group>"; };
+		066ED2D01CF83C57009B6454 /* SDUploadImageAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDUploadImageAPI.h; sourceTree = "<group>"; };
+		066ED2D11CF83C57009B6454 /* SDUploadImageAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDUploadImageAPI.m; sourceTree = "<group>"; };
 		0696B55F1CA1123E00E69D13 /* CHNetworking.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CHNetworking.h; sourceTree = "<group>"; };
 		30F693EE1C9150F000FA1E40 /* CHNetworkingDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CHNetworkingDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		30F693F21C9150F000FA1E40 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -221,9 +248,35 @@
 			path = JSONModelTransformations;
 			sourceTree = "<group>";
 		};
+		066ED2BF1CF83C57009B6454 /* SDBaseRequest */ = {
+			isa = PBXGroup;
+			children = (
+				066ED2C01CF83C57009B6454 /* Info.plist */,
+				066ED2C11CF83C57009B6454 /* SDBaseRequest.h */,
+				066ED2C21CF83C57009B6454 /* SDBaseResponse.h */,
+				066ED2C31CF83C57009B6454 /* SDBaseResponse.m */,
+				066ED2C41CF83C57009B6454 /* SDForgetPasswordAPI.h */,
+				066ED2C51CF83C57009B6454 /* SDForgetPasswordAPI.m */,
+				066ED2C61CF83C57009B6454 /* SDLoginAPI.h */,
+				066ED2C71CF83C57009B6454 /* SDLoginAPI.m */,
+				066ED2C81CF83C57009B6454 /* SDRegisterAPI.h */,
+				066ED2C91CF83C57009B6454 /* SDRegisterAPI.m */,
+				066ED2CA1CF83C57009B6454 /* SDResetPasswordAPI.h */,
+				066ED2CB1CF83C57009B6454 /* SDResetPasswordAPI.m */,
+				066ED2CC1CF83C57009B6454 /* SDSendCodeAPI.h */,
+				066ED2CD1CF83C57009B6454 /* SDSendCodeAPI.m */,
+				066ED2CE1CF83C57009B6454 /* SDUpdateProfileAPI.h */,
+				066ED2CF1CF83C57009B6454 /* SDUpdateProfileAPI.m */,
+				066ED2D01CF83C57009B6454 /* SDUploadImageAPI.h */,
+				066ED2D11CF83C57009B6454 /* SDUploadImageAPI.m */,
+			);
+			path = SDBaseRequest;
+			sourceTree = "<group>";
+		};
 		30F693E51C9150EF00FA1E40 = {
 			isa = PBXGroup;
 			children = (
+				066ED2BF1CF83C57009B6454 /* SDBaseRequest */,
 				0601E0F11CD20B1C00462846 /* JSONModel */,
 				30F694081C91510400FA1E40 /* AFNetworking */,
 				30F6942E1C91510400FA1E40 /* CHNetworking */,
@@ -413,6 +466,7 @@
 			files = (
 				30F694011C9150F000FA1E40 /* LaunchScreen.storyboard in Resources */,
 				30F693FE1C9150F000FA1E40 /* Assets.xcassets in Resources */,
+				066ED2D21CF83C57009B6454 /* Info.plist in Resources */,
 				30F694421C91510400FA1E40 /* LICENSE in Resources */,
 				30F693FC1C9150F000FA1E40 /* Main.storyboard in Resources */,
 				0601E1181CD20B1C00462846 /* LICENSE_jsonmodel.txt in Resources */,
@@ -436,14 +490,20 @@
 				30F694501C91510400FA1E40 /* CHNetworkAgent.m in Sources */,
 				30F6943D1C91510400FA1E40 /* AFNetworkReachabilityManager.m in Sources */,
 				30F694511C91510400FA1E40 /* CHNetworkConfig.m in Sources */,
+				066ED2D31CF83C57009B6454 /* SDBaseResponse.m in Sources */,
+				066ED2D41CF83C57009B6454 /* SDForgetPasswordAPI.m in Sources */,
 				30F693F31C9150F000FA1E40 /* main.m in Sources */,
 				0601E1141CD20B1C00462846 /* JSONHTTPClient.m in Sources */,
+				066ED2D71CF83C57009B6454 /* SDResetPasswordAPI.m in Sources */,
 				0601E1171CD20B1C00462846 /* JSONValueTransformer.m in Sources */,
+				066ED2D81CF83C57009B6454 /* SDSendCodeAPI.m in Sources */,
 				30F694471C91510400FA1E40 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				30F6943E1C91510400FA1E40 /* AFSecurityPolicy.m in Sources */,
 				30F6944A1C91510400FA1E40 /* UIProgressView+AFNetworking.m in Sources */,
+				066ED2D91CF83C57009B6454 /* SDUpdateProfileAPI.m in Sources */,
 				30F6943F1C91510400FA1E40 /* AFURLRequestSerialization.m in Sources */,
 				0601E1121CD20B1C00462846 /* NSArray+JSONModel.m in Sources */,
+				066ED2D61CF83C57009B6454 /* SDRegisterAPI.m in Sources */,
 				0601E10F1CD20B1C00462846 /* JSONModelArray.m in Sources */,
 				30F694401C91510400FA1E40 /* AFURLResponseSerialization.m in Sources */,
 				30F694461C91510400FA1E40 /* AFNetworkActivityIndicatorManager.m in Sources */,
@@ -456,6 +516,8 @@
 				0601E1101CD20B1C00462846 /* JSONModelClassProperty.m in Sources */,
 				30F6944C1C91510400FA1E40 /* UIWebView+AFNetworking.m in Sources */,
 				0601E1131CD20B1C00462846 /* JSONAPI.m in Sources */,
+				066ED2DA1CF83C57009B6454 /* SDUploadImageAPI.m in Sources */,
+				066ED2D51CF83C57009B6454 /* SDLoginAPI.m in Sources */,
 				0601E1191CD20B1C00462846 /* README.md in Sources */,
 				30F694521C91510400FA1E40 /* CHNetworkPrivate.m in Sources */,
 				30F6945A1C916F6200FA1E40 /* ASImageIdAPI.m in Sources */,

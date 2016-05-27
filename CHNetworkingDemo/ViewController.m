@@ -19,6 +19,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [[CHNetworkConfig sharedInstance] setAllowPrintLog:YES];
+    [[CHNetworkConfig sharedInstance] setBaseUrl:@"http://app4tv.sudaotech.com/platform"];
     api = [[ASImageIdAPI alloc]init];
     
 
