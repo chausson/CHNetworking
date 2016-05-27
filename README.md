@@ -1,5 +1,11 @@
+[![CocoaPods](https://cocoapod-badges.herokuapp.com/v/CHNetworking/badge.svg)](http://www.cocoapods.org/?q=CHNetworking)
+
 # CHNetworking的介绍
 基于 AFNetworking 封装的 iOS 网络库，其实现了一套基于子类实现封装 的 API。
+
+# CHNetworking安装
+通过cocoapods第三方依赖管理安装cocoapods
+& pod 'CHNetworking'
 
 # CHNetworking提供的功能
 相比 AFNetworking，CHNetworking 提供了以下的功能：  支持按不同类型切换网络环境 支持 block 模式的回调方式
