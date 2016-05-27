@@ -19,6 +19,7 @@
         config = [[self alloc]init];
         config->_maxConcurrentOperationCount = 3;
         config->_allowPrintLog = NO;
+        config->_headerFieldArray = [NSMutableArray array];
     });
     return config;
 }

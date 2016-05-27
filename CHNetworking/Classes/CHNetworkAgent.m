@@ -59,18 +59,7 @@
     manager.operationQueue.maxConcurrentOperationCount = [_config maxConcurrentOperationCount] ;
     manager.requestSerializer.timeoutInterval = [request requestTimeoutInterval];
     
-    if (_config.headerFieldParameters && ![request isFilterheaderFieldParameter]) {
-        [_config.headerFieldParameters enumerateObjectsUsingBlock:^(NSDictionary * _Nonnull dict, NSUInteger idx, BOOL * _Nonnull stop) {
-            [dict enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
-                NSString *value = obj;
-                if (value.length > 0) {
-                    [manager.requestSerializer setValue:value forHTTPHeaderField:key];
-                }
 
-            }];
-        }];
-
-    }
     //默认是json
     switch (request.requestSerializerType) {
         case CHRequestSerializerTypeJSON: {
@@ -107,10 +96,23 @@
     
     manager.requestSerializer.stringEncoding = NSUTF8StringEncoding;
     
+    
     for (NSString *key in request.requestHeaderFieldValueDictionary.allKeys) {
         if (request.requestHeaderFieldValueDictionary[key] != nil) {
             [manager.requestSerializer setValue:request.requestHeaderFieldValueDictionary[key] forHTTPHeaderField:key];
         }
+    }
+    if (_config.headerFieldParameters && ![request isFilterheaderFieldParameter]) {
+        [_config.headerFieldParameters enumerateObjectsUsingBlock:^(NSDictionary * _Nonnull dict, NSUInteger idx, BOOL * _Nonnull stop) {
+            [dict enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
+                NSString *value = obj;
+                if (value.length > 0) {
+                    [manager.requestSerializer setValue:value forHTTPHeaderField:key];
+                }
+                
+            }];
+        }];
+        
     }
     
     return manager;
