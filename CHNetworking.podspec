@@ -86,6 +86,7 @@ Pod::Spec.new do |s|
   #
 
   s.source_files  = "CHNetworking/Classes/*.{h,m}"
+  s.source_files  = "CHNetworking/Classes/CHModel/*.{h,m}"
   # s.exclude_files = "Classes/Exclude"
 
   # s.public_header_files = "Classes/**/*.h"
