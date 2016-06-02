@@ -8,10 +8,9 @@
 
 #import "CHNetResponse.h"
 #import "CHNetworkPrivate.h"
-#import "JSONModel.h"
-@implementation CHNetResponse{
-    Class _responseClass;
-}
+#import "CHModel/CHClassInfo.h"
+#import "CHModel/NSObject+CHModel.h"
+@implementation CHNetResponse
 - (instancetype)init
 {
     self = [super init];
@@ -20,25 +19,14 @@
     }
     return self;
 }
-// 处理解析方法
-- (JSONModel *)serializerObject{
-    Class jsonClass = _responseClass;
-    if (jsonClass != nil) {
-        if ([jsonClass isSubclassOfClass:JSONModel.class]) {
-            NSError *error ;
-            
-            JSONModel *model = [[jsonClass alloc]initWithDictionary:self->_responseJSONObject error:&error];
-            if(error){
-                         CHLog(@"Serializer Error Class is %@",error);   
-            }
-
-            return model;
-        }else{
-            CHLog(@"Serializer Error Class is not JSONModel");
-        }
-        
+- (__kindof NSObject *)responseObject{
+    if (_serializerClass && self.responseJSONObject) {
+        Class jsonClass = _serializerClass;
+        NSObject *obj = [jsonClass CH_modelWithDictionary:self->_responseJSONObject];
+        return obj;
     }
-    return  nil;
+  
+        return  nil;
 }
 - (instancetype)initWithSession:(NSURLSessionDataTask *)session andCallBackData:(id)data{
     CHNetResponse *response = [[CHNetResponse alloc]init];
@@ -58,22 +46,23 @@
 
     return response;
 }
+
 - (void)setSerializerClass:(Class )obj{
-    _responseClass = obj;
+    _serializerClass = obj;
 }
-// 将JSON串转化为字典或者数组
-- (id)toArrayOrNSDictionary:(NSData *)jsonData{
-    NSError *error = nil;
-    id jsonObject = [NSJSONSerialization JSONObjectWithData:jsonData
-                                                    options:NSJSONReadingAllowFragments
-                                                      error:&error];
-    
-    if (jsonObject != nil && error == nil){
-        return jsonObject;
-    }else{
-        // 解析错误
-        return nil;
-    }
-    
-}
+//// 将JSON串转化为字典或者数组
+//- (id)toArrayOrNSDictionary:(NSData *)jsonData{
+//    NSError *error = nil;
+//    id jsonObject = [NSJSONSerialization JSONObjectWithData:jsonData
+//                                                    options:NSJSONReadingAllowFragments
+//                                                      error:&error];
+//    
+//    if (jsonObject != nil && error == nil){
+//        return jsonObject;
+//    }else{
+//        // 解析错误
+//        return nil;
+//    }
+//    
+//}
 @end

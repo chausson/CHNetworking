@@ -17,7 +17,7 @@
     return @{@"type":@(0)};
 }
 - (NSArray *)getImageIds{
-    ExampleModel *model = (ExampleModel *)self.response.serializerObject;
+    ExampleModel *model = (ExampleModel *)self.response.responseObject;
     NSLog(@"message = %@",model.message);
     return nil;
 }

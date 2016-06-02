@@ -29,6 +29,9 @@
 		066ED2D81CF83C57009B6454 /* SDSendCodeAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 066ED2CD1CF83C57009B6454 /* SDSendCodeAPI.m */; };
 		066ED2D91CF83C57009B6454 /* SDUpdateProfileAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 066ED2CF1CF83C57009B6454 /* SDUpdateProfileAPI.m */; };
 		066ED2DA1CF83C57009B6454 /* SDUploadImageAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 066ED2D11CF83C57009B6454 /* SDUploadImageAPI.m */; };
+		06972B211D0001B4003BB646 /* CHClassInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 06972B1E1D0001B4003BB646 /* CHClassInfo.m */; };
+		06972B221D0001B4003BB646 /* NSObject+CHModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 06972B201D0001B4003BB646 /* NSObject+CHModel.m */; };
+		06972B261D00202E003BB646 /* CHLoginModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 06972B251D00202E003BB646 /* CHLoginModel.m */; };
 		30F693F31C9150F000FA1E40 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 30F693F21C9150F000FA1E40 /* main.m */; };
 		30F693F61C9150F000FA1E40 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 30F693F51C9150F000FA1E40 /* AppDelegate.m */; };
 		30F693F91C9150F000FA1E40 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30F693F81C9150F000FA1E40 /* ViewController.m */; };
@@ -106,6 +109,12 @@
 		066ED2D01CF83C57009B6454 /* SDUploadImageAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDUploadImageAPI.h; sourceTree = "<group>"; };
 		066ED2D11CF83C57009B6454 /* SDUploadImageAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDUploadImageAPI.m; sourceTree = "<group>"; };
 		0696B55F1CA1123E00E69D13 /* CHNetworking.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CHNetworking.h; sourceTree = "<group>"; };
+		06972B1D1D0001B4003BB646 /* CHClassInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHClassInfo.h; sourceTree = "<group>"; };
+		06972B1E1D0001B4003BB646 /* CHClassInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHClassInfo.m; sourceTree = "<group>"; };
+		06972B1F1D0001B4003BB646 /* NSObject+CHModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+CHModel.h"; sourceTree = "<group>"; };
+		06972B201D0001B4003BB646 /* NSObject+CHModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+CHModel.m"; sourceTree = "<group>"; };
+		06972B241D00202E003BB646 /* CHLoginModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHLoginModel.h; sourceTree = "<group>"; };
+		06972B251D00202E003BB646 /* CHLoginModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHLoginModel.m; sourceTree = "<group>"; };
 		30F693EE1C9150F000FA1E40 /* CHNetworkingDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CHNetworkingDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		30F693F21C9150F000FA1E40 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		30F693F41C9150F000FA1E40 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -273,6 +282,17 @@
 			path = SDBaseRequest;
 			sourceTree = "<group>";
 		};
+		06972B1C1D0001B4003BB646 /* CHModel */ = {
+			isa = PBXGroup;
+			children = (
+				06972B1D1D0001B4003BB646 /* CHClassInfo.h */,
+				06972B1E1D0001B4003BB646 /* CHClassInfo.m */,
+				06972B1F1D0001B4003BB646 /* NSObject+CHModel.h */,
+				06972B201D0001B4003BB646 /* NSObject+CHModel.m */,
+			);
+			path = CHModel;
+			sourceTree = "<group>";
+		};
 		30F693E51C9150EF00FA1E40 = {
 			isa = PBXGroup;
 			children = (
@@ -296,6 +316,8 @@
 		30F693F01C9150F000FA1E40 /* CHNetworkingDemo */ = {
 			isa = PBXGroup;
 			children = (
+				06972B241D00202E003BB646 /* CHLoginModel.h */,
+				06972B251D00202E003BB646 /* CHLoginModel.m */,
 				0601E11A1CD2182D00462846 /* ExampleModel.h */,
 				0601E11B1CD2182D00462846 /* ExampleModel.m */,
 				30F694581C916F6200FA1E40 /* ASImageIdAPI.h */,
@@ -390,6 +412,7 @@
 		30F6942F1C91510400FA1E40 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				06972B1C1D0001B4003BB646 /* CHModel */,
 				30F694301C91510400FA1E40 /* CHBaseRequest.h */,
 				30F694311C91510400FA1E40 /* CHBaseRequest.m */,
 				30F694321C91510400FA1E40 /* CHNetRequest.h */,
@@ -492,6 +515,7 @@
 				30F694511C91510400FA1E40 /* CHNetworkConfig.m in Sources */,
 				066ED2D31CF83C57009B6454 /* SDBaseResponse.m in Sources */,
 				066ED2D41CF83C57009B6454 /* SDForgetPasswordAPI.m in Sources */,
+				06972B221D0001B4003BB646 /* NSObject+CHModel.m in Sources */,
 				30F693F31C9150F000FA1E40 /* main.m in Sources */,
 				0601E1141CD20B1C00462846 /* JSONHTTPClient.m in Sources */,
 				066ED2D71CF83C57009B6454 /* SDResetPasswordAPI.m in Sources */,
@@ -505,6 +529,7 @@
 				0601E1121CD20B1C00462846 /* NSArray+JSONModel.m in Sources */,
 				066ED2D61CF83C57009B6454 /* SDRegisterAPI.m in Sources */,
 				0601E10F1CD20B1C00462846 /* JSONModelArray.m in Sources */,
+				06972B211D0001B4003BB646 /* CHClassInfo.m in Sources */,
 				30F694401C91510400FA1E40 /* AFURLResponseSerialization.m in Sources */,
 				30F694461C91510400FA1E40 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				30F694491C91510400FA1E40 /* UIImageView+AFNetworking.m in Sources */,
@@ -513,6 +538,7 @@
 				0601E1111CD20B1C00462846 /* JSONModelError.m in Sources */,
 				30F694481C91510400FA1E40 /* UIButton+AFNetworking.m in Sources */,
 				30F6944B1C91510400FA1E40 /* UIRefreshControl+AFNetworking.m in Sources */,
+				06972B261D00202E003BB646 /* CHLoginModel.m in Sources */,
 				0601E1101CD20B1C00462846 /* JSONModelClassProperty.m in Sources */,
 				30F6944C1C91510400FA1E40 /* UIWebView+AFNetworking.m in Sources */,
 				0601E1131CD20B1C00462846 /* JSONAPI.m in Sources */,

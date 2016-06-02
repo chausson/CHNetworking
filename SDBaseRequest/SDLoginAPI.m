@@ -7,7 +7,7 @@
 //
 
 #import "SDLoginAPI.h"
-
+#import "CHLoginModel.h"
 @implementation SDLoginAPI
 - (instancetype)initWithAccount:(NSString *)account
                        password:(NSString *)password{
@@ -30,16 +30,14 @@
 - (NSString *)requestPathUrl{
     return @"/app/auth/login";
 }
-- (void)requestCompletionBeforeBlock{
-    _baseResponse = [[SDBaseResponse alloc]initWithJSON:self.response.responseJSONObject];
+- (Class)responseModelClass{
+    return CHLoginModel.class;
 }
 - (NSString *)token{
+    CHLoginModel *login = (CHLoginModel *)self.response.responseObject;
+    
+    return login.message;
 
-    if ([self.response.responseJSONObject objectForKey:@"data"] ) {
-        return [self.response.responseJSONObject objectForKey:@"data"];
-    }else{
-        return nil;
-    }
 }
 
 
