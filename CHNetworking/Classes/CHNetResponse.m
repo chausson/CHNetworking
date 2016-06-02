@@ -8,8 +8,8 @@
 
 #import "CHNetResponse.h"
 #import "CHNetworkPrivate.h"
-#import "CHModel/CHClassInfo.h"
-#import "CHModel/NSObject+CHModel.h"
+#import "CHClassInfo.h"
+#import "NSObject+CHModel.h"
 @implementation CHNetResponse
 - (instancetype)init
 {
