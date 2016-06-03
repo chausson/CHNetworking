@@ -21,7 +21,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [[CHNetworkConfig sharedInstance] setAllowPrintLog:YES];
+  //  [[CHNetworkConfig sharedInstance] setAllowPrintLog:YES];
     [[CHNetworkConfig sharedInstance] setBaseUrl:@"http://app4tv.sudaotech.com/platform"];
     image = [[ASImageIdAPI alloc]init];
     login = [[SDLoginAPI alloc]initWithAccount:@"18116342840" password:@"111111"];
@@ -37,9 +37,8 @@
     }];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)dealloc{
+    
 }
 
 @end

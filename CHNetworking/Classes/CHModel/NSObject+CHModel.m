@@ -1395,7 +1395,13 @@ static NSString *ModelDescription(NSObject *model) {
     NSDictionary *dic = [self _CH_dictionaryWithJSON:json];
     return [self CH_modelWithDictionary:dic];
 }
++ (void)CH_modelWithDictionary:(NSDictionary *)dictionary
+                              toModel:(NSObject *)model{
+    if (!dictionary || dictionary == (id)kCFNull) return ;
+    if (!model || model == (id)kCFNull) return ;
+    [model CH_modelSetWithDictionary:dictionary];
 
+}
 + (instancetype)CH_modelWithDictionary:(NSDictionary *)dictionary {
     if (!dictionary || dictionary == (id)kCFNull) return nil;
     if (![dictionary isKindOfClass:[NSDictionary class]]) return nil;

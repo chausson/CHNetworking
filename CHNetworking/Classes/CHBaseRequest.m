@@ -38,6 +38,10 @@
 - (Class)responseModelClass{
     return nil;
 }
+/// 返回需要的模型对象
+- (NSObject *)responseObject{
+    return nil;
+}
 /// Http请求的方法
 - (CHRequestMethod)requestMethod{
     return CHRequestMethodGet;

@@ -19,7 +19,7 @@
     }
     return self;
 }
-- (__kindof NSObject *)responseObject{
+- (NSObject *)responseObject{
     if (_serializerClass && self.responseJSONObject) {
         Class jsonClass = _serializerClass;
         NSObject *obj = [jsonClass CH_modelWithDictionary:self->_responseJSONObject];
@@ -40,15 +40,25 @@
     }else if( httpResponse.statusCode != 200){
         response->_error = [NSError errorWithDomain:@"StatusCodeError" code:httpResponse.statusCode userInfo:@{@"response":[httpResponse description]}];
     }else{
-        response->_responseData = data;
-        response-> _responseJSONObject = data;
+        if (data &&  data != (id)kCFNull) {
+        if ([data isKindOfClass:[NSDictionary class]]) response-> _responseJSONObject = data;
+ 
+        if ([data isKindOfClass:[NSData class]])   response-> _responseData = data;
+
+        }
     }
+    
 
     return response;
 }
 
 - (void)setSerializerClass:(Class )obj{
     _serializerClass = obj;
+}
+- (void)setResponseObj:(NSObject *)responseObject{
+   
+    [responseObject.class CH_modelWithDictionary:self -> _responseJSONObject toModel:responseObject];
+
 }
 //// 将JSON串转化为字典或者数组
 //- (id)toArrayOrNSDictionary:(NSData *)jsonData{

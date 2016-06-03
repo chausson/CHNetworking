@@ -96,8 +96,10 @@ typedef void(^CHRequestCompletionBlock)(__kindof CHBaseRequest *request);
  */
 
 - (NSDictionary *)requestDataInfo;
-/// 需要返回的模型对象
-- (Class )responseModelClass;
+
+- (Class )responseModelClass CHDEPRECATED(0.3.1);;
+/// 返回需要的模型对象
+- (NSObject *)responseObject;
 
 // 是否过滤公共参数 默认为否
 - (BOOL )isFilterBaseParameter;
@@ -121,9 +123,9 @@ typedef void(^CHRequestCompletionBlock)(__kindof CHBaseRequest *request);
 - (void)requestDidStop;
 
 /// 在block回调完成后事件处理
-- (void)requestCompletionAfterBlock CHDEPRECATED(0.12);
+- (void)requestCompletionAfterBlock CHDEPRECATED(0.2.0);
 /// 在block回调完成前事件处理
-- (void)requestCompletionBeforeBlock CHDEPRECATED(0.12);
+- (void)requestCompletionBeforeBlock CHDEPRECATED(0.2.0);
 
 - (void)stop;
 

@@ -95,7 +95,8 @@ NS_ASSUME_NONNULL_BEGIN
      `NSString` -> SEL, Class.
  */
 + (nullable instancetype)CH_modelWithDictionary:(NSDictionary *)dictionary;
-
++ (void)CH_modelWithDictionary:(NSDictionary *)dictionary
+                              toModel:(NSObject *)model;
 /**
  Set the receiver's properties with a json object.
  
@@ -422,6 +423,8 @@ NS_ASSUME_NONNULL_BEGIN
  @return Returns YES if the model is valid, or NO to ignore this model.
  */
 - (BOOL)modelCustomTransformToDictionary:(NSMutableDictionary *)dic;
+
+
 
 @end
 

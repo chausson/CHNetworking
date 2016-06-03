@@ -8,13 +8,16 @@
 
 #import "SDLoginAPI.h"
 #import "CHLoginModel.h"
-@implementation SDLoginAPI
+@implementation SDLoginAPI{
+    CHLoginModel *loginModel;
+}
 - (instancetype)initWithAccount:(NSString *)account
                        password:(NSString *)password{
     self = [super init];
     if (self) {
         NSAssert(account.length > 0 && password.length > 0, @"account or password is nil");
-
+        loginModel = [[CHLoginModel alloc]init];
+        loginModel.message = @"fuck";
         _account = account;
         _password = password;
     }
@@ -30,13 +33,12 @@
 - (NSString *)requestPathUrl{
     return @"/app/auth/login";
 }
-- (Class)responseModelClass{
-    return CHLoginModel.class;
+- (NSObject *)responseObject{
+    return loginModel;
 }
 - (NSString *)token{
-    CHLoginModel *login = (CHLoginModel *)self.response.responseObject;
     
-    return login.message;
+    return loginModel.data;
 
 }
 
