@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "CHNetworking"
-  s.version      = "0.3.2" 
+  s.version      = "0.3.3" 
   s.summary      = "A Net Framework Base On AFNetworking 3.0.4"
 
   # This description is used to generate tags and improve search results.
@@ -77,7 +77,7 @@ Pod::Spec.new do |s|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  s.source       = { :git => "https://github.com/chausson/CHNetworking.git", :tag => "0.3.2"}
+  s.source       = { :git => "https://github.com/chausson/CHNetworking.git", :tag => "0.3.3"}
  # ――― Source Code ――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――  #
 
   #  CocoaPods is smart about how it includes source code. For source files
@@ -86,8 +86,8 @@ Pod::Spec.new do |s|
   #  Not including the public_header_files will make all headers public.
   #
 
-  s.source_files  = "CHNetworking/Classes/*.{h,m}"
-  s.source_files  = "CHNetworking/Classes/CHModel/*.{h,m}"
+  s.source_files  = "CHNetworking/Classes/*.{h,m}","CHNetworking/Classes/CHModel/*.{h,m}"
+  # s.source_files  = "CHNetworking/Classes/CHModel/*.{h,m}"
   # s.exclude_files = "Classes/Exclude"
 
   # s.public_header_files = "Classes/**/*.h"
