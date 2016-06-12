@@ -10,6 +10,7 @@
 #import "ASImageIdAPI.h"
 #import "CHNetworkConfig.h"
 #import "SDLoginAPI.h"
+#import "HHTShiperExperienceApi.h"
 @interface ViewController ()
 
 @end
@@ -21,22 +22,38 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-  //  [[CHNetworkConfig sharedInstance] setAllowPrintLog:YES];
-    [[CHNetworkConfig sharedInstance] setBaseUrl:@"http://app4tv.sudaotech.com/platform"];
+    [[CHNetworkConfig sharedInstance] setAllowPrintLog:YES];
+    [[CHNetworkConfig sharedInstance] setBaseUrl:@"http://shipping.sudaotech.com/platform"];
     image = [[ASImageIdAPI alloc]init];
     login = [[SDLoginAPI alloc]initWithAccount:@"18116342840" password:@"111111"];
 
 
     // Do any additional setup after loading the view, typically from a nib.
 }
-- (IBAction)action:(UIButton *)sender {
-    [login startWithSuccessBlock:^(__kindof SDLoginAPI *request) {
-        NSLog(@"token =%@",request.token);
-    } failureBlock:^(__kindof SDLoginAPI *request) {
+- (IBAction)image:(UIButton *)sender {
+    [image startWithSuccessBlock:^(__kindof ASImageIdAPI *request) {
+        
+    } failureBlock:^(__kindof ASImageIdAPI *request) {
         
     }];
 }
+- (IBAction)action:(UIButton *)sender {
+    HHTShiperExperienceApi *api = [[HHTShiperExperienceApi alloc]init];
+    api.crewId = @"1";
+    [api startWithSuccessBlock:^(__kindof HHTShiperExperienceApi *request) {
+        [request getItems];
+    } failureBlock:^(__kindof HHTShiperExperienceApi *request) {
+        
+    }];
 
+}
+- (IBAction)login:(UIButton *)sender {
+    [login startWithSuccessBlock:^(__kindof SDLoginAPI *request) {
+        NSLog(@"token =%@",request.token);
+    } failureBlock:^(__kindof SDLoginAPI *request) {
+
+    }];
+}
 - (void)dealloc{
     
 }

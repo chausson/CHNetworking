@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "AFNetworking.h"
 #import "CHNetResponse.h"
-#define CHDEPRECATED(_version) __attribute__((deprecated)) //弃用方法宏定义
+#import "CHNetworkPrivate.h"
 
 typedef NS_ENUM(NSInteger , CHRequestMethod) {
     CHRequestMethodGet ,

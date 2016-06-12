@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+
 @class serializerClass;
 @protocol serializerClass <NSObject>
 @end

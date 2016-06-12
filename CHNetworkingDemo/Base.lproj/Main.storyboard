@@ -23,16 +23,43 @@
                                     <constraint firstAttribute="width" constant="248" id="238-L6-ci6"/>
                                     <constraint firstAttribute="height" constant="87" id="zXS-tz-jLn"/>
                                 </constraints>
-                                <state key="normal" title="Button"/>
+                                <state key="normal" title="projectApi"/>
                                 <connections>
                                     <action selector="action:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hiV-hd-dDh"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GPn-66-vcZ">
+                                <rect key="frame" x="176" y="290" width="248" height="87"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="87" id="Ypw-hU-UsT"/>
+                                    <constraint firstAttribute="width" constant="248" id="ecY-Jk-wEk"/>
+                                </constraints>
+                                <state key="normal" title="login"/>
+                                <connections>
+                                    <action selector="action:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Els-yD-fjW"/>
+                                    <action selector="login:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cVZ-4m-k8N"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zhw-t9-S2c">
+                                <rect key="frame" x="176" y="83" width="248" height="87"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="87" id="hwg-ei-Xs8"/>
+                                    <constraint firstAttribute="width" constant="248" id="k1q-wu-SgX"/>
+                                </constraints>
+                                <state key="normal" title="image"/>
+                                <connections>
+                                    <action selector="image:" destination="BYZ-38-t0r" eventType="touchUpInside" id="wKF-Vr-qvJ"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="zhw-t9-S2c" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ESD-Xv-XgO"/>
+                            <constraint firstItem="GPn-66-vcZ" firstAttribute="top" secondItem="d8h-jE-9pR" secondAttribute="bottom" constant="18" id="INR-gU-hRn"/>
                             <constraint firstItem="d8h-jE-9pR" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="165" id="NnB-BP-dWF"/>
                             <constraint firstItem="d8h-jE-9pR" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="chF-pd-BeW"/>
+                            <constraint firstItem="zhw-t9-S2c" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="63" id="sKz-ru-WNd"/>
+                            <constraint firstItem="GPn-66-vcZ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="x1C-SU-w4V"/>
                         </constraints>
                     </view>
                 </viewController>

@@ -10,6 +10,7 @@
 #import "CHNetworkPrivate.h"
 #import "CHClassInfo.h"
 #import "NSObject+CHModel.h"
+#import "CHModelObject.h"
 @implementation CHNetResponse
 - (instancetype)init
 {
@@ -20,13 +21,17 @@
     return self;
 }
 - (NSObject *)responseObject{
-    if (_serializerClass && self.responseJSONObject) {
+    NSObject *obj;
+    if (_serializerClass && _responseJSONObject != (id)kCFNull) {
         Class jsonClass = _serializerClass;
-        NSObject *obj = [jsonClass CH_modelWithDictionary:self->_responseJSONObject];
-        return obj;
+        if ( [CHNetworkPrivate checkJSONModelWithClass:jsonClass]) {
+            obj = [(id<CHModelObject>)jsonClass initWithDictionary:_responseJSONObject error:nil];
+        }else{
+            obj = [jsonClass CH_modelWithDictionary:self->_responseJSONObject];
+        }
     }
-  
-        return  nil;
+    NSAssert(obj == nil,@"CHNetResponse.m line 36 responseObject is nil");
+    return obj;
 }
 - (instancetype)initWithSession:(NSURLSessionDataTask *)session andCallBackData:(id)data{
     CHNetResponse *response = [[CHNetResponse alloc]init];
@@ -56,8 +61,11 @@
     _serializerClass = obj;
 }
 - (void)setResponseObj:(NSObject *)responseObject{
-   
-    [responseObject.class CH_modelWithDictionary:self -> _responseJSONObject toModel:responseObject];
+    if ([responseObject respondsToSelector:@selector(initWithDictionary:error:)]) {
+        responseObject = [(id<CHModelObject>) responseObject initWithDictionary:_responseJSONObject error:nil];
+    }else{
+        [responseObject.class CH_modelWithDictionary:_responseJSONObject toModel:responseObject];
+    }
 
 }
 //// 将JSON串转化为字典或者数组
