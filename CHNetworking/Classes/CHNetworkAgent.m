@@ -117,6 +117,48 @@
     
     return manager;
 }
+- (NSURLRequest *)assemblyWithRequest:(CHBaseRequest *)request
+                                  url:(NSString *)url
+                           parameters:(NSDictionary *)parameter{
+    NSMutableURLRequest *req = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url]];
+    NSString *paramStr = [CHNetworkPrivate dictionaryToJSONString:parameter];
+    NSString *method ;
+    [req setHTTPMethod:@"DELETE"];
+    switch (request.requestMethod) {
+        case CHRequestMethodGet:
+            method = @"GET";
+            break;
+        case CHRequestMethodPut:
+            method = @"PUT";
+            break;
+        case CHRequestMethodPost:
+            method = @"POST";
+            break;
+        case CHRequestMethodPatch:
+            method = @"PATH";
+            break;
+        case CHRequestMethodDelete:
+            method = @"DELETE";
+            break;
+
+        default:
+            break;
+    }
+    switch (request.requestSerializerType) {
+        case CHRequestSerializerTypeJSON:
+            [req setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+            break;
+        case CHRequestSerializerPlainText   :
+            [req setValue:@"text/plain" forHTTPHeaderField:@"Content-Type"];
+            break;
+        default:
+            break;
+    }
+    NSAssert(method != nil, @"CHRequestMethod Can't Be CHRequestMethodPostData");
+
+    [req setHTTPBody:[paramStr dataUsingEncoding:NSUTF8StringEncoding]];
+    return req;
+}
 - (void)addRequest:(CHBaseRequest *)request{
 
     AFHTTPSessionManager *manager = [self createManagerWithRequeset:request];
@@ -130,9 +172,23 @@
             [parameter addEntriesFromDictionary:obj];
         }];
     }
-//    url = [CHNetworkPrivate URLEncode:url];
 
-    if (request.requestMethod == CHRequestMethodGet) {
+    if ([request isHTTPBodyParametersRequest]) {
+        //   后台参数放入body中接收 方法
+        NSURLRequest *res =  [self assemblyWithRequest:request url:url parameters:parameter];
+
+        request.session = (NSURLSessionTask *)[manager dataTaskWithRequest:res completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
+            if (error) {
+                request.response = [[CHNetResponse alloc]initWithResponse:response andCallBackData:error];
+            }else{
+                request.response = [[CHNetResponse alloc]initWithResponse:response andCallBackData:responseObject];
+            }
+
+            [self handleRequestResult:request.session];
+            }];
+        [request.session resume];
+        
+    } else if (request.requestMethod == CHRequestMethodGet) {
        request.session = [manager GET:url parameters:parameter progress:^(NSProgress * _Nonnull downloadProgress) {
            
         } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {

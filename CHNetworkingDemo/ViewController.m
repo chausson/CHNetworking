@@ -22,8 +22,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [[CHNetworkConfig sharedInstance] setAllowPrintLog:YES];
-    [[CHNetworkConfig sharedInstance] setBaseUrl:@"http://shipping.sudaotech.com/platform"];
+    [[CHNetworkConfig sharedInstance] setAllowPrintLog:YES];http:
+
     image = [[ASImageIdAPI alloc]init];
     login = [[SDLoginAPI alloc]initWithAccount:@"18116342840" password:@"111111"];
 
@@ -38,6 +38,7 @@
     }];
 }
 - (IBAction)action:(UIButton *)sender {
+    [[CHNetworkConfig sharedInstance] setBaseUrl:@"http://shipping.sudaotech.com/platform"];
     HHTShiperExperienceApi *api = [[HHTShiperExperienceApi alloc]init];
     api.crewId = @"1";
     [api startWithSuccessBlock:^(__kindof HHTShiperExperienceApi *request) {
@@ -48,6 +49,7 @@
 
 }
 - (IBAction)login:(UIButton *)sender {
+    [[CHNetworkConfig sharedInstance] setBaseUrl:@"http://app4tv.sudaotech.com/platform"];
     [login startWithSuccessBlock:^(__kindof SDLoginAPI *request) {
         NSLog(@"token =%@",request.token);
     } failureBlock:^(__kindof SDLoginAPI *request) {

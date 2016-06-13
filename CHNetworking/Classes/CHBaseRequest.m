@@ -34,6 +34,9 @@
 - (BOOL )isFilterheaderFieldParameter{
     return NO;
 }
+- (BOOL )isHTTPBodyParametersRequest{
+    return NO;
+}
 /// 需要返回的模型对象
 - (Class)responseModelClass{
     return nil;

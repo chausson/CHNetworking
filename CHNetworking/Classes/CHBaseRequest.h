@@ -105,6 +105,8 @@ typedef void(^CHRequestCompletionBlock)(__kindof CHBaseRequest *request);
 - (BOOL )isFilterBaseParameter;
 // 是否过滤公共头参数 默认为否
 - (BOOL )isFilterheaderFieldParameter;
+// 是否将参数放入body中请求 默认为否
+- (BOOL )isHTTPBodyParametersRequest;
 /// Http请求的方法
 - (CHRequestMethod)requestMethod;
 

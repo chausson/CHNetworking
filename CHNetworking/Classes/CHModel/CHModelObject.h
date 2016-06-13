@@ -12,6 +12,9 @@
 
 + (instancetype)CH_modelWithDictionary:(NSDictionary *)dictionary; // chmodel解析
 
++ (void)CH_modelWithDictionary:(NSDictionary *)dictionary
+                       toModel:(NSObject *)model;
+
 - (instancetype)initWithDictionary:(NSDictionary*)dict error:(NSError**)err; // jsonmodel解析
 
 @end

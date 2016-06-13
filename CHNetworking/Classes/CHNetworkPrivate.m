@@ -16,6 +16,16 @@ void CHLog(NSString *format, ...) {
 #endif
 }
 @implementation CHNetworkPrivate
++ (NSString *)dictionaryToJSONString:(NSDictionary *)parameter{
+    NSError *error;
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:parameter options:NSJSONWritingPrettyPrinted error:&error];
+    if (!jsonData) {
+        return @"";
+    }
+    
+    NSString* jsonStr = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+    return jsonStr;
+}
 + (BOOL)checkJSONModelWithClass:(Class)cls{
     NSString *jsonModel = NSStringFromClass(cls);
 

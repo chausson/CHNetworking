@@ -8,8 +8,6 @@
 
 #import "CHNetResponse.h"
 #import "CHNetworkPrivate.h"
-#import "CHClassInfo.h"
-#import "NSObject+CHModel.h"
 #import "CHModelObject.h"
 @implementation CHNetResponse
 - (instancetype)init
@@ -27,18 +25,36 @@
         if ( [CHNetworkPrivate checkJSONModelWithClass:jsonClass]) {
             obj = [(id<CHModelObject>)jsonClass initWithDictionary:_responseJSONObject error:nil];
         }else{
-            obj = [jsonClass CH_modelWithDictionary:self->_responseJSONObject];
+            obj = [(id<CHModelObject>)jsonClass CH_modelWithDictionary:_responseJSONObject];
         }
     }
     NSAssert(obj == nil,@"CHNetResponse.m line 36 responseObject is nil");
     return obj;
 }
 - (instancetype)initWithSession:(NSURLSessionDataTask *)session andCallBackData:(id)data{
+
+    CHNetResponse *response = [self assemblyResponseWithNSURLResponse:(NSHTTPURLResponse *)session.response data:data];
+    if (response) {
+            response->_taskIdentifier = session.taskIdentifier;
+            response->_responseURL = session.response.URL;
+    }
+    
+    return response;
+
+}
+- (instancetype)initWithResponse:(NSURLResponse *)res andCallBackData:(id)data{
+    
+    CHNetResponse *response = [self assemblyResponseWithNSURLResponse:(NSHTTPURLResponse *)res data:data];
+    if (response) {
+        
+    }
+    return response;
+}
+- (CHNetResponse *)assemblyResponseWithNSURLResponse:(NSHTTPURLResponse *)res data:(id)data{
     CHNetResponse *response = [[CHNetResponse alloc]init];
-    response->_taskIdentifier = session.taskIdentifier;
-    NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)session.response;
+    NSHTTPURLResponse *httpResponse = res;
     response->_statusCode = httpResponse.statusCode;
-    response->_responseURL = session.response.URL;
+    response->_responseURL = res.URL;
     response->_allHeaderFields = httpResponse.allHeaderFields;
     if ([data isKindOfClass:[NSError class]]) {
         response->_error = data;
@@ -46,17 +62,14 @@
         response->_error = [NSError errorWithDomain:@"StatusCodeError" code:httpResponse.statusCode userInfo:@{@"response":[httpResponse description]}];
     }else{
         if (data &&  data != (id)kCFNull) {
-        if ([data isKindOfClass:[NSDictionary class]]) response-> _responseJSONObject = data;
- 
-        if ([data isKindOfClass:[NSData class]])   response-> _responseData = data;
-
+            if ([data isKindOfClass:[NSDictionary class]]) response-> _responseJSONObject = data;
+            
+            if ([data isKindOfClass:[NSData class]])   response-> _responseData = data;
+            
         }
     }
-    
-
     return response;
 }
-
 - (void)setSerializerClass:(Class )obj{
     _serializerClass = obj;
 }
@@ -64,7 +77,7 @@
     if ([responseObject respondsToSelector:@selector(initWithDictionary:error:)]) {
         responseObject = [(id<CHModelObject>) responseObject initWithDictionary:_responseJSONObject error:nil];
     }else{
-        [responseObject.class CH_modelWithDictionary:_responseJSONObject toModel:responseObject];
+        [(id<CHModelObject>)responseObject.class CH_modelWithDictionary:_responseJSONObject toModel:responseObject];
     }
 
 }

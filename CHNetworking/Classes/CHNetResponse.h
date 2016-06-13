@@ -12,7 +12,7 @@
 @protocol serializerClass <NSObject>
 @end
 @interface CHNetResponse : NSObject
-
+- (instancetype)initWithResponse:(NSURLResponse *)res andCallBackData:(id)data;
 - (instancetype)initWithSession:(NSURLSessionDataTask *)session andCallBackData:(id)data;
 
 @property (readonly)  NSUInteger  taskIdentifier;/* an identifier for this task, assigned by and unique*/
