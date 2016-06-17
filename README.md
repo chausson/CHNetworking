@@ -1,4 +1,6 @@
 [![CocoaPods](https://cocoapod-badges.herokuapp.com/v/CHNetworking/badge.svg)](http://www.cocoapods.org/?q=CHNetworking)
+![License MIT](https://go-shields.herokuapp.com/license-MIT-blue.png)
+![Platform info](http://img.shields.io/cocoapods/p/CHNetworking.svg?style=flat)
 
 # CHNetworking的介绍
 基于 AFNetworking 封装的 iOS 网络库，其实现了一套基于子类实现封装 的 API。
