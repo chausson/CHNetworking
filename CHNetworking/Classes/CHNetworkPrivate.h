@@ -16,8 +16,23 @@ FOUNDATION_EXPORT void CHLog(NSString *format, ...) NS_FORMAT_FUNCTION(1,2);
 //+ (NSString *)URLEncode:(NSString *)url;
 + (BOOL)checkJson:(id)json withValidator:(id)validatorJson;
 
-+ (BOOL)checkJSONModelWithClass:(Class)cls;
++ (BOOL)checkJSONModel:(id )obj; // 判断是不是JSONModel
 
 + (NSString *)dictionaryToJSONString:(NSDictionary *)parameter;
+
++ (NSString *)clientVersion;
+
++ (NSString *)md5FromString:(NSString *)string;
+
+/// NSURLIsExcludedFromBackupKey，注明不备份
++ (void)cancelBackupFileAtICloud:(NSString *)path;
+/**
+ * @brief 用CHModel和JSONModel解析模型
+ * @param JSON 数据
+ * @param 解析的对象
+ * @return 如果有返回对象
+ */
+
++ (void)analysisJSONWithDict:(NSDictionary*)dic toModel:(NSObject *)model;
 
 @end

@@ -293,13 +293,7 @@
 - (void)handleRequestResult:(CHURLSessionTask *)session{
     NSString *key = [self requestHashKey:session];
     CHBaseRequest *request = _requestsRecord[key];
-    if ([request responseModelClass]) {
-            [request.response setSerializerClass:[request responseModelClass]];
-    }
-    NSObject *responsObj = [request responseObject];
-    if(responsObj){
-        [request.response setResponseObj:responsObj];
-    }
+
     if (request.delegate  != nil && [request.delegate respondsToSelector:@selector(requestBeforeFinished:)]) {
         [request.delegate requestBeforeFinished:request];
     }

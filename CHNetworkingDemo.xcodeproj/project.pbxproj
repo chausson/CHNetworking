@@ -425,6 +425,7 @@
 			isa = PBXGroup;
 			children = (
 				06972B1C1D0001B4003BB646 /* CHModel */,
+				0696B55F1CA1123E00E69D13 /* CHNetworking.h */,
 				30F694301C91510400FA1E40 /* CHBaseRequest.h */,
 				30F694311C91510400FA1E40 /* CHBaseRequest.m */,
 				30F694321C91510400FA1E40 /* CHNetRequest.h */,
@@ -437,7 +438,6 @@
 				30F694391C91510400FA1E40 /* CHNetworkConfig.m */,
 				30F6943A1C91510400FA1E40 /* CHNetworkPrivate.h */,
 				30F6943B1C91510400FA1E40 /* CHNetworkPrivate.m */,
-				0696B55F1CA1123E00E69D13 /* CHNetworking.h */,
 			);
 			path = Classes;
 			sourceTree = "<group>";

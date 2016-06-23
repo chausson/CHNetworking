@@ -17,8 +17,8 @@
     return @{@"type":@(0)};
 }
 - (NSArray *)getImageIds{
-    ExampleModel *model = (ExampleModel *)self.response.responseObject;
-    NSLog(@"message = %@",model.message);
+
+    NSLog(@"message = %@",self.response.responseJSONObject);
     return nil;
 }
 - (Class )responseModelClass{

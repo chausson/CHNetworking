@@ -9,6 +9,7 @@
 #import "CHNetResponse.h"
 #import "CHNetworkPrivate.h"
 #import "CHModelObject.h"
+#import "CHNetworkConfig.h"
 @implementation CHNetResponse
 - (instancetype)init
 {
@@ -18,19 +19,7 @@
     }
     return self;
 }
-- (NSObject *)responseObject{
-    NSObject *obj;
-    if (_serializerClass && _responseJSONObject != (id)kCFNull) {
-        Class jsonClass = _serializerClass;
-        if ( [CHNetworkPrivate checkJSONModelWithClass:jsonClass]) {
-            obj = [(id<CHModelObject>)jsonClass initWithDictionary:_responseJSONObject error:nil];
-        }else{
-            obj = [(id<CHModelObject>)jsonClass CH_modelWithDictionary:_responseJSONObject];
-        }
-    }
-    NSAssert(obj == nil,@"CHNetResponse.m line 36 responseObject is nil");
-    return obj;
-}
+
 - (instancetype)initWithSession:(NSURLSessionDataTask *)session andCallBackData:(id)data{
 
     CHNetResponse *response = [self assemblyResponseWithNSURLResponse:(NSHTTPURLResponse *)session.response data:data];
@@ -53,9 +42,11 @@
 - (CHNetResponse *)assemblyResponseWithNSURLResponse:(NSHTTPURLResponse *)res data:(id)data{
     CHNetResponse *response = [[CHNetResponse alloc]init];
     NSHTTPURLResponse *httpResponse = res;
-    response->_statusCode = httpResponse.statusCode;
-    response->_responseURL = res.URL;
-    response->_allHeaderFields = httpResponse.allHeaderFields;
+    if(httpResponse){
+        response->_statusCode = httpResponse.statusCode;
+        response->_responseURL = res.URL;
+        response->_allHeaderFields = httpResponse.allHeaderFields;
+    }
     if ([data isKindOfClass:[NSError class]]) {
         response->_error = data;
     }else if( httpResponse.statusCode != 200){
@@ -70,30 +61,5 @@
     }
     return response;
 }
-- (void)setSerializerClass:(Class )obj{
-    _serializerClass = obj;
-}
-- (void)setResponseObj:(NSObject *)responseObject{
-    if ([responseObject respondsToSelector:@selector(initWithDictionary:error:)]) {
-        responseObject = [(id<CHModelObject>) responseObject initWithDictionary:_responseJSONObject error:nil];
-    }else{
-        [(id<CHModelObject>)responseObject.class CH_modelWithDictionary:_responseJSONObject toModel:responseObject];
-    }
 
-}
-//// 将JSON串转化为字典或者数组
-//- (id)toArrayOrNSDictionary:(NSData *)jsonData{
-//    NSError *error = nil;
-//    id jsonObject = [NSJSONSerialization JSONObjectWithData:jsonData
-//                                                    options:NSJSONReadingAllowFragments
-//                                                      error:&error];
-//    
-//    if (jsonObject != nil && error == nil){
-//        return jsonObject;
-//    }else{
-//        // 解析错误
-//        return nil;
-//    }
-//    
-//}
 @end

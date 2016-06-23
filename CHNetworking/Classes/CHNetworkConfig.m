@@ -20,6 +20,7 @@
         config->_maxConcurrentOperationCount = 3;
         config->_allowPrintLog = NO;
         config->_headerFieldArray = [NSMutableArray array];
+        config->_cacheTimeInSeconds = -1;
     });
     return config;
 }

@@ -18,7 +18,6 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [[CHNetworkConfig sharedInstance]setBaseUrl:@"http://p2pguide.sudaotech.com/platform"];
-    [[CHNetworkConfig sharedInstance] setAllowPrintLog:YES];
     return YES;
 }
 

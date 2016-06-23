@@ -27,13 +27,7 @@
 
 @property (readonly, strong) NSURL *responseURL;
 
-@property (readonly, strong) NSObject *responseObject;/* 通过Class获取解析完的对象*/
-
 @property (readonly, strong) NSError *error;
 
-@property (readonly, assign) Class serializerClass;
-
-- (void)setSerializerClass:(Class )obj;
-- (void)setResponseObj:(NSObject *)responseObject;
 
 @end

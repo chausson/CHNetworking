@@ -27,22 +27,21 @@
     [dic setObject:self.crewId forKey:@"crewId"];
     return dic;
 }
-- (NSObject *)responseObject{
-   return  _model;
+- (NSObject *)analysisModel{
+    return _model;
 }
-//- (Class )responseModelClass{
-//    return [HHTShiperExperienceModel class];
-//}
 
 - (NSArray <HHTShiperExperienceModelItems *>*)getItems{
     if (_model.code == 200) {
-   //     NSLog(@" items%@",_model.data.items);
+        NSLog(@"_model.data.items?_model.data.items =%@",[_model.data.items[0] shipTypeName]);
         return  _model.data.items?_model.data.items:nil;
     }else{
         NSLog(@" %s%@",__PRETTY_FUNCTION__,_model.message);
         return nil;
     }
 }
-
+- (NSInteger)cacheTimeInSeconds {
+    return 60 * 3;
+}
 
 @end

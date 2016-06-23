@@ -11,7 +11,7 @@
 @protocol CHModelObject <NSObject>
 
 + (instancetype)CH_modelWithDictionary:(NSDictionary *)dictionary; // chmodel解析
-
++ (instancetype)CH_modelWithJSON:(id)json;
 + (void)CH_modelWithDictionary:(NSDictionary *)dictionary
                        toModel:(NSObject *)model;
 

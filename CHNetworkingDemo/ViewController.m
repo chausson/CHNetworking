@@ -22,7 +22,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [[CHNetworkConfig sharedInstance] setAllowPrintLog:YES];http:
+   // [[CHNetworkConfig sharedInstance] setAllowPrintLog:YES];
 
     image = [[ASImageIdAPI alloc]init];
     login = [[SDLoginAPI alloc]initWithAccount:@"18116342840" password:@"111111"];

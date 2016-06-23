@@ -22,7 +22,14 @@
  */
 @property (assign, nonatomic) NSInteger maxConcurrentOperationCount;
 
-@property (assign, nonatomic) BOOL allowPrintLog; //  authorization to print log info defult = NO
+/**
+ *   @brief 全局缓存的时间,当大于0时才有效,默认为-1
+ */
+@property (assign, nonatomic) NSInteger cacheTimeInSeconds;
+/**
+ *   @brief 全局开启打印Request的日志,默认不开启
+ */
+@property (assign, nonatomic) BOOL allowPrintLog;
 /**
  *   @brief 添加公共的参数数组
  */
