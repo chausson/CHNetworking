@@ -33,7 +33,7 @@
 
 - (NSArray <HHTShiperExperienceModelItems *>*)getItems{
     if (_model.code == 200) {
-        NSLog(@"_model.data.items?_model.data.items =%@",[_model.data.items[0] shipTypeName]);
+        NSLog(@"_model.data.items?_model.data.items =%@  cache = %@",[_model.data.items[0] shipTypeName],self.cacheJson);
         return  _model.data.items?_model.data.items:nil;
     }else{
         NSLog(@" %s%@",__PRETTY_FUNCTION__,_model.message);

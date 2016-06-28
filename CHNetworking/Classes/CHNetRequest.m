@@ -201,16 +201,13 @@
 }
 - (void)requestCompletionBeforeBlock{
     NSObject *analysisModel = [self analysisModel];
-    if (analysisModel ) {
-        NSDictionary *json ;
-        if (_cacheJson) {
-            json = self.cacheJson;
-        }else{
-            json = self.response.responseJSONObject;
-        }
+    NSDictionary *json ;
+    json = self.cacheJson?self.cacheJson:self.response.responseJSONObject;
+
+    if (analysisModel && json) {
         [CHNetworkPrivate analysisJSONWithDict:json toModel:analysisModel];
     }
-    [self saveJsonResponseToCacheFile:self.cacheJson];
+    [self saveJsonResponseToCacheFile:json];
     [super requestCompletionBeforeBlock];
 }
 // 存储cache json
@@ -224,6 +221,7 @@
     }
 }
 - (NSObject *)analysisModel{
+    
     return nil;
 }
 @end
