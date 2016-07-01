@@ -203,16 +203,20 @@
     NSObject *analysisModel = [self analysisModel];
     NSDictionary *json ;
     json = self.cacheJson?self.cacheJson:self.response.responseJSONObject;
-
-    if (analysisModel && json) {
+    if (analysisModel ) {
         [CHNetworkPrivate analysisJSONWithDict:json toModel:analysisModel];
     }
-    [self saveJsonResponseToCacheFile:json];
     [super requestCompletionBeforeBlock];
+}
+- (void)requestCompletionAfterBlock{
+
+    [self saveJsonResponseToCacheFile:self.response.responseJSONObject];
+
+    [super requestCompletionAfterBlock];
 }
 // 存储cache json
 - (void)saveJsonResponseToCacheFile:(id)jsonResponse {
-    if ([self cacheTimeInSeconds] > 0 && ![self isDataFromCache]) {
+    if ([self cacheTimeInSeconds] > 0 ) {
         NSDictionary *json = jsonResponse;
         if (json != nil) {
             [NSKeyedArchiver archiveRootObject:json toFile:[self cacheFilePath]];
