@@ -24,6 +24,9 @@
     });
     return config;
 }
+- (void)clearHeaderFiled{
+    [_headerFieldArray removeAllObjects];
+}
 - (void)addBaseParameter:(NSDictionary *)parameter{
     NSAssert([parameter isKindOfClass:[NSDictionary class]], @"Error! addBaseParameter Paramerter is not request class");
     [_baseArray addObject:parameter];
