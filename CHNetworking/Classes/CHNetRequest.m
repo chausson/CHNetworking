@@ -201,10 +201,8 @@
 }
 - (void)requestCompletionBeforeBlock{
     NSObject *analysisModel = [self analysisModel];
-    NSDictionary *json ;
-    json = self.cacheJson?self.cacheJson:self.response.responseJSONObject;
     if (analysisModel ) {
-        [CHNetworkPrivate analysisJSONWithDict:json toModel:analysisModel];
+        [CHNetworkPrivate analysisJSONWithDict:self.response.responseJSONObject toModel:analysisModel];
     }
     [super requestCompletionBeforeBlock];
 }

@@ -128,8 +128,10 @@ void CHLog(NSString *format, ...) {
 }
 + (void)analysisJSONWithDict:(NSDictionary*)dic model:(NSObject **)model obj:(NSObject *)obj{
     NSError *error;
-    if ([obj respondsToSelector:@selector(initWithDictionary:error:)]) {
+    if ([obj respondsToSelector:@selector(initWithDictionary:error:)] && dic) {
         *model = [(id<CHModelObject>)obj initWithDictionary:dic error:&error];
+    }else{
+        *model = nil;
     }
     if (error) CHLog(@"%s %@",__PRETTY_FUNCTION__,[error description]);
 }

@@ -36,4 +36,5 @@
 - (void)addBaseParameter:(NSDictionary *)parameter;
 - (void)addheaderFieldParameter:(NSDictionary *)parameter;
 - (void)clearHeaderFiled;
+- (void)clearRequestCache;
 @end

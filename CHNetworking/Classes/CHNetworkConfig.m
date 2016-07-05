@@ -44,4 +44,31 @@
     return [_headerFieldArray copy];
     
 }
+- (void)clearRequestCache{
+    NSString *pathOfLibrary = [NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    NSString *path = [pathOfLibrary stringByAppendingPathComponent:@"CHCacheRequestData"];
+    
+    // filter cache base path
+    [self clearPath:path];
+}
+- (void)clearPath:(NSString *)path {
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    BOOL isDir;
+    if (![fileManager fileExistsAtPath:path isDirectory:&isDir]) {
+        return;
+    } else {
+        NSError *error = nil;
+        [fileManager removeItemAtPath:path error:&error];
+    }
+}
+- (void)createBasePath:(NSString *)path {
+    __autoreleasing NSError *error = nil;
+    [[NSFileManager defaultManager] createDirectoryAtPath:path withIntermediateDirectories:YES
+                                               attributes:nil error:&error];
+    if (error) {
+        CHLog(@"%s %s %d %@", __PRETTY_FUNCTION__,__FILE__,__LINE__,error);
+    } else {
+        
+    }
+}
 @end
