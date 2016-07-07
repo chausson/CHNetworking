@@ -92,6 +92,7 @@
 		0601E10D1CD20B1C00462846 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		0601E11A1CD2182D00462846 /* ExampleModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExampleModel.h; sourceTree = "<group>"; };
 		0601E11B1CD2182D00462846 /* ExampleModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExampleModel.m; sourceTree = "<group>"; };
+		060E2A151D2E9C65004D2B96 /* CHModelObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CHModelObject.h; sourceTree = "<group>"; };
 		066ED2C01CF83C57009B6454 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		066ED2C11CF83C57009B6454 /* SDBaseRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDBaseRequest.h; sourceTree = "<group>"; };
 		066ED2C21CF83C57009B6454 /* SDBaseResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDBaseResponse.h; sourceTree = "<group>"; };
@@ -291,6 +292,7 @@
 		06972B1C1D0001B4003BB646 /* CHModel */ = {
 			isa = PBXGroup;
 			children = (
+				060E2A151D2E9C65004D2B96 /* CHModelObject.h */,
 				06972B1D1D0001B4003BB646 /* CHClassInfo.h */,
 				06972B1E1D0001B4003BB646 /* CHClassInfo.m */,
 				06972B1F1D0001B4003BB646 /* NSObject+CHModel.h */,
