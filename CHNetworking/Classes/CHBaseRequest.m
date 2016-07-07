@@ -16,6 +16,9 @@
 - (NSDictionary *)requestDataInfo{
     return nil;
 }
+- (NSURL *)specificDownloadPath{
+    return nil;
+}
 - (NSString *)customUrl{
     return @"";
 }

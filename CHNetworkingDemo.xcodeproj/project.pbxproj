@@ -114,7 +114,6 @@
 		068505B51D081DB10004B6B2 /* HHTShiperExperienceApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HHTShiperExperienceApi.m; sourceTree = "<group>"; };
 		068505B61D081DB10004B6B2 /* HHTShiperExperienceModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HHTShiperExperienceModel.h; sourceTree = "<group>"; };
 		068505B71D081DB10004B6B2 /* HHTShiperExperienceModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HHTShiperExperienceModel.m; sourceTree = "<group>"; };
-		068F16E01D0D2EB900BB6473 /* CHModelObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CHModelObject.h; sourceTree = "<group>"; };
 		0696B55F1CA1123E00E69D13 /* CHNetworking.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CHNetworking.h; sourceTree = "<group>"; };
 		06972B1D1D0001B4003BB646 /* CHClassInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHClassInfo.h; sourceTree = "<group>"; };
 		06972B1E1D0001B4003BB646 /* CHClassInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHClassInfo.m; sourceTree = "<group>"; };
@@ -292,7 +291,6 @@
 		06972B1C1D0001B4003BB646 /* CHModel */ = {
 			isa = PBXGroup;
 			children = (
-				068F16E01D0D2EB900BB6473 /* CHModelObject.h */,
 				06972B1D1D0001B4003BB646 /* CHClassInfo.h */,
 				06972B1E1D0001B4003BB646 /* CHClassInfo.m */,
 				06972B1F1D0001B4003BB646 /* NSObject+CHModel.h */,

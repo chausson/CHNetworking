@@ -57,7 +57,9 @@ typedef void(^CHRequestCompletionBlock)(__kindof CHBaseRequest *request);
 
 @property (copy ,nonatomic ) CHRequestCompletionBlock failureBlock;
 
-@property (nonatomic, weak) id<CHRequestDelegate> delegate;
+@property (weak ,nonatomic) id<CHRequestDelegate> delegate;
+
+@property (strong ,nonatomic ) NSProgress *downloadProgress;
 /**
  *  block回调
  */
@@ -77,7 +79,8 @@ typedef void(^CHRequestCompletionBlock)(__kindof CHBaseRequest *request);
 
 /// 自定义请求URL 和requestPathUrl Baseurl不可重复使用
 - (NSString *)customUrl;
-
+/// 指定文件下载路径,默认为nil,如果不为空将Request变为下载请求
+- (NSURL *)specificDownloadPath;
 /// 请求的连接超时时间，默认为60秒
 - (NSTimeInterval)requestTimeoutInterval;
 /// 请求的参数

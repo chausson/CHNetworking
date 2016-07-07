@@ -27,6 +27,8 @@
 
 @property (readonly, strong) NSURL *responseURL;
 
+@property (readonly, strong) NSURL *filePath;
+
 @property (readonly, strong) NSError *error;
 
 

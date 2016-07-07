@@ -173,7 +173,28 @@
         }];
     }
 
-    if ([request isHTTPBodyParametersRequest]) {
+    if ([request specificDownloadPath]) {
+        
+        NSURLRequest *res =  [self assemblyWithRequest:request url:url parameters:parameter];
+        NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+        AFURLSessionManager *manger = [[AFURLSessionManager alloc]initWithSessionConfiguration:configuration];
+
+        request.session = [manger downloadTaskWithRequest:res progress:^(NSProgress * _Nonnull downloadProgress) {
+            request.downloadProgress = downloadProgress ;
+        } destination:^NSURL * _Nonnull(NSURL * _Nonnull targetPath, NSURLResponse * _Nonnull response) {
+            return [request specificDownloadPath];
+        } completionHandler:^(NSURLResponse * _Nonnull response, NSURL * _Nullable filePath, NSError * _Nullable error) {
+            if (error) {
+                request.response = [[CHNetResponse alloc]initWithResponse:response andCallBackData:error];
+            }else{
+                request.response = [[CHNetResponse alloc]initWithResponse:response andCallBackData:nil];
+            }
+            [request.response setValue:filePath forKey:@"filePath"];
+            
+            [self handleRequestResult:request.session];
+        }];
+        [request.session resume];
+    }else if ([request isHTTPBodyParametersRequest]) {
         //   后台参数放入body中接收 方法
         NSURLRequest *res =  [self assemblyWithRequest:request url:url parameters:parameter];
 
@@ -268,7 +289,6 @@
     [self addOperation:request];
     
 }
-
 - (void)cancelRequest:(CHBaseRequest *)request{
     if (request.session) {
         [request.session cancel];
