@@ -154,6 +154,23 @@
         default:
             break;
     }
+    for (NSString *key in request.requestHeaderFieldValueDictionary.allKeys) {
+        if (request.requestHeaderFieldValueDictionary[key] != nil) {
+            [req setValue:request.requestHeaderFieldValueDictionary[key] forHTTPHeaderField:key];
+        }
+    }
+    if (_config.headerFieldParameters && ![request isFilterheaderFieldParameter]) {
+        [_config.headerFieldParameters enumerateObjectsUsingBlock:^(NSDictionary * _Nonnull dict, NSUInteger idx, BOOL * _Nonnull stop) {
+            [dict enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
+                NSString *value = obj;
+                if (value.length > 0) {
+                    [req setValue:value forHTTPHeaderField:key];
+                }
+                
+            }];
+        }];
+        
+    }
     NSAssert(method != nil, @"CHRequestMethod Can't Be CHRequestMethodPostData");
 
     [req setHTTPBody:[paramStr dataUsingEncoding:NSUTF8StringEncoding]];
