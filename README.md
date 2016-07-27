@@ -3,7 +3,7 @@
 ![Platform info](http://img.shields.io/cocoapods/p/CHNetworking.svg?style=flat)
 
 # CHNetworking的介绍
-基于 AFNetworking 封装的 iOS 网络库，其实现了一套基于子类实现封装 的 API。
+基于 AFNetworking 3.0.4 版本 封装的 iOS 网络请求库，实现了对象请求的设计思想 ,把每一个Request当成一个对象来处理.
  1.   [CHNetworking安装](https://github.com/chausson/CHNetworking#CHNetworking安装)
  2.   [CHNetworking提供的功能](https://github.com/chausson/CHNetworking#CHNetworking提供的功能) 
  3.   [CHNetworking的基础](https://github.com/chausson/CHNetworking#CHNetworking的基础)  
