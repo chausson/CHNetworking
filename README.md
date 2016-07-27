@@ -4,7 +4,12 @@
 
 # CHNetworking的介绍
 基于 AFNetworking 封装的 iOS 网络库，其实现了一套基于子类实现封装 的 API。
-
+ 1.  [CHNetworking安装](https://github.com/chausson/CHNetworking#CHNetworking安装) 
+ 2.  [CHNetworking提供的功能](https://github.com/chausson/CHNetworking#CHNetworking提供的功能) 
+ 3.  [CHNetworking的基础](https://github.com/chausson/CHNetworking#CHNetworking的基础) 
+ 4.  [益处](https://github.com/chausson/CHNetworking#这样的益处) 
+ 5.  [弊端](https://github.com/chausson/CHNetworking#它的弊端) 
+ 6.  [CHNetworking设计架构图](https://github.com/chausson/CHNetworking#CHNetworking设计架构图) 
 # CHNetworking安装
 
 ```
