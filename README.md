@@ -4,8 +4,8 @@
 
 # CHNetworking的介绍
 基于 AFNetworking 3.0.4 版本 封装的 iOS 网络请求库，实现了对象请求的设计思想 ,把每一个Request当成一个对象来处理.
- 1.   [CHNetworking安装](https://github.com/chausson/CHNetworking#CHNetworking安装)
- 2.   [CHNetworking提供的功能](https://github.com/chausson/CHNetworking#CHNetworking提供的功能) 
+ 1.   [CHNetworking安装](https://github.com/chausson/CHNetworking#安装)
+ 2.   [CHNetworking提供的功能](https://github.com/chausson/CHNetworking#提供的功能) 
  3.   [CHNetworking的基础](https://github.com/chausson/CHNetworking#CHNetworking的基础)  
  4.   [益处](https://github.com/chausson/CHNetworking#这样的益处)  
  5.   [弊端](https://github.com/chausson/CHNetworking#它的弊端)
