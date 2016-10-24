@@ -20,6 +20,7 @@
 		0601E1181CD20B1C00462846 /* LICENSE_jsonmodel.txt in Resources */ = {isa = PBXBuildFile; fileRef = 0601E10C1CD20B1C00462846 /* LICENSE_jsonmodel.txt */; };
 		0601E1191CD20B1C00462846 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 0601E10D1CD20B1C00462846 /* README.md */; };
 		0601E11C1CD2182D00462846 /* ExampleModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0601E11B1CD2182D00462846 /* ExampleModel.m */; };
+		062F67C41DBDAB63005F1959 /* CHNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 062F67C31DBDAB63005F1959 /* CHNetworking.swift */; };
 		066ED2D21CF83C57009B6454 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 066ED2C01CF83C57009B6454 /* Info.plist */; };
 		066ED2D31CF83C57009B6454 /* SDBaseResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 066ED2C31CF83C57009B6454 /* SDBaseResponse.m */; };
 		066ED2D41CF83C57009B6454 /* SDForgetPasswordAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 066ED2C51CF83C57009B6454 /* SDForgetPasswordAPI.m */; };
@@ -93,6 +94,8 @@
 		0601E11A1CD2182D00462846 /* ExampleModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExampleModel.h; sourceTree = "<group>"; };
 		0601E11B1CD2182D00462846 /* ExampleModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExampleModel.m; sourceTree = "<group>"; };
 		060E2A151D2E9C65004D2B96 /* CHModelObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CHModelObject.h; sourceTree = "<group>"; };
+		062F67C21DBDAB63005F1959 /* CHNetworkingDemo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CHNetworkingDemo-Bridging-Header.h"; path = "../CHNetworking/Swift/CHNetworkingDemo-Bridging-Header.h"; sourceTree = "<group>"; };
+		062F67C31DBDAB63005F1959 /* CHNetworking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CHNetworking.swift; sourceTree = "<group>"; };
 		066ED2C01CF83C57009B6454 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		066ED2C11CF83C57009B6454 /* SDBaseRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDBaseRequest.h; sourceTree = "<group>"; };
 		066ED2C21CF83C57009B6454 /* SDBaseResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDBaseResponse.h; sourceTree = "<group>"; };
@@ -264,6 +267,14 @@
 			path = JSONModelTransformations;
 			sourceTree = "<group>";
 		};
+		062F67C11DBDAABD005F1959 /* Swift */ = {
+			isa = PBXGroup;
+			children = (
+				062F67C31DBDAB63005F1959 /* CHNetworking.swift */,
+			);
+			path = Swift;
+			sourceTree = "<group>";
+		};
 		066ED2BF1CF83C57009B6454 /* SDBaseRequest */ = {
 			isa = PBXGroup;
 			children = (
@@ -324,6 +335,7 @@
 		30F693F01C9150F000FA1E40 /* CHNetworkingDemo */ = {
 			isa = PBXGroup;
 			children = (
+				062F67C21DBDAB63005F1959 /* CHNetworkingDemo-Bridging-Header.h */,
 				068505B41D081DB10004B6B2 /* HHTShiperExperienceApi.h */,
 				068505B51D081DB10004B6B2 /* HHTShiperExperienceApi.m */,
 				068505B61D081DB10004B6B2 /* HHTShiperExperienceModel.h */,
@@ -417,6 +429,7 @@
 			isa = PBXGroup;
 			children = (
 				30F6942F1C91510400FA1E40 /* Classes */,
+				062F67C11DBDAABD005F1959 /* Swift */,
 			);
 			path = CHNetworking;
 			sourceTree = "<group>";
@@ -468,6 +481,7 @@
 		30F693E61C9150EF00FA1E40 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0730;
 				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = CM;
 				TargetAttributes = {
@@ -523,6 +537,7 @@
 				068505B81D081DB10004B6B2 /* HHTShiperExperienceApi.m in Sources */,
 				30F694431C91510400FA1E40 /* README.md in Sources */,
 				0601E1161CD20B1C00462846 /* JSONKeyMapper.m in Sources */,
+				062F67C41DBDAB63005F1959 /* CHNetworking.swift in Sources */,
 				30F693F61C9150F000FA1E40 /* AppDelegate.m in Sources */,
 				30F694501C91510400FA1E40 /* CHNetworkAgent.m in Sources */,
 				30F6943D1C91510400FA1E40 /* AFNetworkReachabilityManager.m in Sources */,
@@ -677,10 +692,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = CHNetworkingDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Chausson.CHNetworkingDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "CHNetworking/Swift/CHNetworkingDemo-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -688,10 +706,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = CHNetworkingDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Chausson.CHNetworkingDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "CHNetworking/Swift/CHNetworkingDemo-Bridging-Header.h";
 			};
 			name = Release;
 		};

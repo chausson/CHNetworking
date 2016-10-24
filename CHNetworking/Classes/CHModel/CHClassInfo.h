@@ -1,6 +1,6 @@
 //
 //  CHClassInfo.h
-//  2016修改YYModel前缀使用
+//  为避免和pod导入的YYModel重名冲突，2016年修改YYModel前缀使用，感谢开源！
 //
 //  This source code is licensed under the MIT-style license found in the
 //  LICENSE file in the root directory of this source tree.
