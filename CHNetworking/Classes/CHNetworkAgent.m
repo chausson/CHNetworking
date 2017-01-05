@@ -285,7 +285,7 @@
             request.session = [manager POST:url parameters:parameter constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
                 [formData appendPartWithFileData:data name:name fileName:filename mimeType:mimeType];
             } progress:^(NSProgress * _Nonnull uploadProgress) {
-                
+                request.uploadProgress = uploadProgress;
             } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
                 request.response = [[CHNetResponse alloc]initWithSession:task andCallBackData:responseObject];
                 [self handleRequestResult:task];

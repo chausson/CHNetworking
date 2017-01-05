@@ -53,6 +53,8 @@ typedef void(^CHRequestCompletionBlock)(__kindof CHBaseRequest *request);
 
 @property (strong ,nonatomic ) CHURLSessionTask *session;
 
+@property (strong ,nonatomic ) NSProgress *uploadProgress;
+
 @property (copy ,nonatomic ) CHRequestCompletionBlock successfulBlock;
 
 @property (copy ,nonatomic ) CHRequestCompletionBlock failureBlock;
