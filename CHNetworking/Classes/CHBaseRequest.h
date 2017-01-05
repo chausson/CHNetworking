@@ -46,6 +46,7 @@ typedef NS_ENUM(NSUInteger, CHRequestResponseType) {
 typedef NSURLSessionTask CHURLSessionTask;
 
 typedef void(^CHRequestCompletionBlock)(__kindof CHBaseRequest *request);
+typedef void(^CHRequestUploadProgressBlock)(__kindof NSProgress *progress);
 
 @interface CHBaseRequest : NSObject
 
@@ -53,23 +54,27 @@ typedef void(^CHRequestCompletionBlock)(__kindof CHBaseRequest *request);
 
 @property (strong ,nonatomic ) CHURLSessionTask *session;
 
-@property (strong ,nonatomic ) NSProgress *uploadProgress;
-
+@property (copy ,nonatomic ) CHRequestUploadProgressBlock progressBlock;
 @property (copy ,nonatomic ) CHRequestCompletionBlock successfulBlock;
-
 @property (copy ,nonatomic ) CHRequestCompletionBlock failureBlock;
 
 @property (weak ,nonatomic) id<CHRequestDelegate> delegate;
-
-@property (strong ,nonatomic ) NSProgress *downloadProgress;
 /**
  *  block回调
  */
 - (void)startWithSuccessBlock:(CHRequestCompletionBlock)success
                 failureBlock:(CHRequestCompletionBlock)failure;
 
+- (void)startWithProgressBlock:(CHRequestUploadProgressBlock)progress
+                  successBlock:(CHRequestCompletionBlock)success
+                  failureBlock:(CHRequestCompletionBlock)failure;
+
 - (void)setSuccessBlock:(CHRequestCompletionBlock)success
            failureBlock:(CHRequestCompletionBlock)failure;
+
+- (void)setProgressBlock:(CHRequestUploadProgressBlock)progress
+            successBlock:(CHRequestCompletionBlock)success
+            failureBlock:(CHRequestCompletionBlock)failure;
 
 /**
  *  把block置nil来打破循环引用
@@ -126,9 +131,9 @@ typedef void(^CHRequestCompletionBlock)(__kindof CHBaseRequest *request);
 - (void)requestDidStop;
 
 /// 在block回调完成后事件处理
-- (void)requestCompletionAfterBlock CHDEPRECATED(0.2.0);
+- (void)requestCompletionAfterBlock; // CHDEPRECATED(0.2.0);
 /// 在block回调完成前事件处理
-- (void)requestCompletionBeforeBlock CHDEPRECATED(0.2.0);
+- (void)requestCompletionBeforeBlock; // CHDEPRECATED(0.2.0);
 
 - (void)stop;
 

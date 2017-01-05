@@ -73,6 +73,19 @@
     [self start];
 }
 
+- (void)startWithProgressBlock:(CHRequestUploadProgressBlock)progress
+                  successBlock:(CHRequestCompletionBlock)success
+                  failureBlock:(CHRequestCompletionBlock)failure{
+    [self setProgressBlock:progress successBlock:success failureBlock:failure];
+    [self start];
+}
+- (void)setProgressBlock:(CHRequestUploadProgressBlock)progress
+            successBlock:(CHRequestCompletionBlock)success
+            failureBlock:(CHRequestCompletionBlock)failure{
+    _successfulBlock = success;
+    _progressBlock = progress;
+    _failureBlock = failure;
+}
 - (void)setSuccessBlock:(CHRequestCompletionBlock)success
            failureBlock:(CHRequestCompletionBlock)failure{
     _successfulBlock = success;
@@ -82,6 +95,7 @@
 - (void)clearCompletionBlock{
     self.successfulBlock = nil;
     self.failureBlock = nil;
+    self.progressBlock = nil;
 }
 - (void)start{
     [self requestWillStart];

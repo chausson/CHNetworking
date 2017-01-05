@@ -197,7 +197,9 @@
         AFURLSessionManager *manger = [[AFURLSessionManager alloc]initWithSessionConfiguration:configuration];
 
         request.session = [manger downloadTaskWithRequest:res progress:^(NSProgress * _Nonnull downloadProgress) {
-            request.downloadProgress = downloadProgress ;
+            if (request.progressBlock) {
+                request.progressBlock(downloadProgress);
+            }
         } destination:^NSURL * _Nonnull(NSURL * _Nonnull targetPath, NSURLResponse * _Nonnull response) {
             return [request specificDownloadPath];
         } completionHandler:^(NSURLResponse * _Nonnull response, NSURL * _Nullable filePath, NSError * _Nullable error) {
@@ -228,7 +230,9 @@
         
     } else if (request.requestMethod == CHRequestMethodGet) {
        request.session = [manager GET:url parameters:parameter progress:^(NSProgress * _Nonnull downloadProgress) {
-           
+           if (request.progressBlock) {
+               request.progressBlock(downloadProgress);
+           }
         } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
             request.response = [[CHNetResponse alloc]initWithSession:task andCallBackData:responseObject];
             [self handleRequestResult:task];
@@ -238,7 +242,9 @@
         }];
     } else if (request.requestMethod == CHRequestMethodPost) {
         request.session = [manager POST:url parameters:parameter progress:^(NSProgress * _Nonnull downloadProgress) {
-           
+            if (request.progressBlock) {
+                request.progressBlock(downloadProgress);
+            }
         } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
             request.response = [[CHNetResponse alloc]initWithSession:task andCallBackData:responseObject];
             [self handleRequestResult:task];
@@ -285,7 +291,9 @@
             request.session = [manager POST:url parameters:parameter constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
                 [formData appendPartWithFileData:data name:name fileName:filename mimeType:mimeType];
             } progress:^(NSProgress * _Nonnull uploadProgress) {
-                request.uploadProgress = uploadProgress;
+                if (request.progressBlock) {
+                    request.progressBlock(uploadProgress);
+                }
             } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
                 request.response = [[CHNetResponse alloc]initWithSession:task andCallBackData:responseObject];
                 [self handleRequestResult:task];
