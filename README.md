@@ -19,7 +19,19 @@ pod 'CHNetworking'
 ```
 
 # CHNetworking提供的功能
+理想的实现功能是这些
+一.方便调试
+二.全局配置
+三.API简化
+四.复用性
+五.解耦
+六.复用
+七.解析
+八.缓存
+九.Toast
+十.扩展性
 
+## 目前实现的功能
 ```
 相比 AFNetworking，CHNetworking 提供了以下的功能：  支持按不同类型切换网络环境 支持 block 模式的回调方式
 
