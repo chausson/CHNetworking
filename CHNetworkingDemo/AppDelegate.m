@@ -18,6 +18,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [[CHNetworkConfig sharedInstance]setBaseUrl:@"http://p2pguide.sudaotech.com/platform"];
+    [CHNetworkConfig sharedInstance].allowPrintLog = TRUE;
+    [[CHNetworkConfig sharedInstance] addheaderFieldParameter:@{@"tokenXX":@"x"}];
     return YES;
 }
 

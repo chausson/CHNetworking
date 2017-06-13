@@ -1,10 +1,10 @@
 
 Pod::Spec.new do |s|
-
+    
   s.name         = "CHNetworking"
-  s.version      = "0.4.9" 
-  s.summary      = "A Net Framework Base On AFNetworking 3.0.4"
-  s.description  = "增加上传文件和下载文件进度条的API" 
+  s.version      = "0.5.0" 
+  s.summary      = "The Network Base On AFNetworking 3.0.4"
+  s.description  = "下载文件接收方法错误导致无法使用下载api" 
   s.homepage     = "https://github.com/chausson/CHNetworking.git"
   s.license      = "MIT"
   s.author       = { "Chausson" => "232564026@qq.com" }

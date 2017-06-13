@@ -14,8 +14,7 @@
 #import "CHNetworkPrivate.h"
 @implementation CHNetworkAgent{
     CHNetworkConfig *_config;
-     NSMutableDictionary *_requestsRecord;
-    
+    NSMutableDictionary *_requestsRecord;
 }
 + (CHNetworkAgent *)sharedInstance{
     static CHNetworkAgent  *agent = nil;
@@ -172,8 +171,10 @@
         
     }
     NSAssert(method != nil, @"CHRequestMethod Can't Be CHRequestMethodPostData");
+    if ([request specificDownloadPath]) {
+        [req setHTTPBody:[paramStr dataUsingEncoding:NSUTF8StringEncoding]];
 
-    [req setHTTPBody:[paramStr dataUsingEncoding:NSUTF8StringEncoding]];
+    }
     return req;
 }
 - (void)addRequest:(CHBaseRequest *)request{
@@ -193,8 +194,8 @@
     if ([request specificDownloadPath]) {
         
         NSURLRequest *res =  [self assemblyWithRequest:request url:url parameters:parameter];
-        NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
-        AFURLSessionManager *manger = [[AFURLSessionManager alloc]initWithSessionConfiguration:configuration];
+        
+        AFHTTPSessionManager *manger = [self createManagerWithRequeset:request];
 
         request.session = [manger downloadTaskWithRequest:res progress:^(NSProgress * _Nonnull downloadProgress) {
             if (request.progressBlock) {
@@ -313,6 +314,11 @@
     }
     [self addOperation:request];
     
+    if ([CHNetworkConfig sharedInstance].allowPrintLog) {
+        CHLog(@"Headers =%@ \n", manager.requestSerializer.HTTPRequestHeaders);
+    }
+    
+    
 }
 - (void)cancelRequest:(CHBaseRequest *)request{
     if (request.session) {
@@ -371,7 +377,7 @@
     [request clearCompletionBlock];
  
     if ([CHNetworkConfig sharedInstance].allowPrintLog) {
-        CHLog(@"Finished Request Class: %@ StatusCode= %d URL=%@ Parameters= %@ response=%@", NSStringFromClass([request class]),(int)request.response.statusCode,[request.response.responseURL description],[request requestParameter],request.response.responseJSONObject);
+        CHLog(@"Finished Request Class: %@ StatusCode= %d URL=%@ Parameters= %@ response=%@\n@", NSStringFromClass([request class]),(int)request.response.statusCode,[request.response.responseURL description],[request requestParameter],request.response.responseJSONObject);
     }
 
 }

@@ -9,7 +9,7 @@
 #import "CHNetRequest.h"
 
 @interface ASImageIdAPI : CHNetRequest
-
+@property (assign ,nonatomic) NSInteger code;
 - (NSArray *)getImageIds;
 
 @end

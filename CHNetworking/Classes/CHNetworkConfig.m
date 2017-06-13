@@ -21,6 +21,7 @@
         config->_allowPrintLog = NO;
         config->_headerFieldArray = [NSMutableArray array];
         config->_cacheTimeInSeconds = -1;
+        config->_baseArray = [NSMutableArray array];
     });
     return config;
 }
