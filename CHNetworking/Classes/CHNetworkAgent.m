@@ -122,7 +122,10 @@
     NSMutableURLRequest *req = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url]];
     NSString *paramStr = [CHNetworkPrivate dictionaryToJSONString:parameter];
     NSString *method ;
-    [req setHTTPMethod:@"DELETE"];
+    if (![request specificDownloadPath]) {
+        [req setHTTPMethod:@"DELETE"];
+
+    }
     switch (request.requestMethod) {
         case CHRequestMethodGet:
             method = @"GET";
@@ -171,10 +174,8 @@
         
     }
     NSAssert(method != nil, @"CHRequestMethod Can't Be CHRequestMethodPostData");
-    if ([request specificDownloadPath]) {
-        [req setHTTPBody:[paramStr dataUsingEncoding:NSUTF8StringEncoding]];
+    [req setHTTPBody:[paramStr dataUsingEncoding:NSUTF8StringEncoding]];
 
-    }
     return req;
 }
 - (void)addRequest:(CHBaseRequest *)request{

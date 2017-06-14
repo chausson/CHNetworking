@@ -2,7 +2,7 @@
 Pod::Spec.new do |s|
     
   s.name         = "CHNetworking"
-  s.version      = "0.5.0" 
+  s.version      = "0.5.1" 
   s.summary      = "The Network Base On AFNetworking 3.0.4"
   s.description  = "下载文件接收方法错误导致无法使用下载api" 
   s.homepage     = "https://github.com/chausson/CHNetworking.git"
