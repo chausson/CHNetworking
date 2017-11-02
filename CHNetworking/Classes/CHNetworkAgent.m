@@ -122,7 +122,8 @@
     NSMutableURLRequest *req = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url]];
     NSString *paramStr = [CHNetworkPrivate dictionaryToJSONString:parameter];
     NSString *method ;
-    if (![request specificDownloadPath]) {
+    BOOL isDownload = [request specificDownloadPath].absoluteString.length > 0;
+    if (!isDownload) {
         [req setHTTPMethod:@"DELETE"];
 
     }
@@ -168,13 +169,16 @@
                 if (value.length > 0) {
                     [req setValue:value forHTTPHeaderField:key];
                 }
-                
+
             }];
         }];
-        
+
     }
     NSAssert(method != nil, @"CHRequestMethod Can't Be CHRequestMethodPostData");
-    [req setHTTPBody:[paramStr dataUsingEncoding:NSUTF8StringEncoding]];
+    if (!isDownload) {
+        [req setHTTPBody:[paramStr dataUsingEncoding:NSUTF8StringEncoding]];
+
+    }
 
     return req;
 }
@@ -215,6 +219,7 @@
             [self handleRequestResult:request.session];
         }];
         [request.session resume];
+
     }else if ([request isHTTPBodyParametersRequest]) {
         //   后台参数放入body中接收 方法
         NSURLRequest *res =  [self assemblyWithRequest:request url:url parameters:parameter];
